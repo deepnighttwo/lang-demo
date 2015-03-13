@@ -5,11 +5,15 @@ package sql;
  * Date: 2015-03-11
  * Time: 11:28
  */
+
+import org.antlr.v4.runtime.ANTLRInputStream;
+import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.ParserRuleContext;
+import org.antlr.v4.runtime.tree.ParseTree;
+import sql.QueryParser.ColnameContext;
+
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-
-import org.antlr.v4.runtime.*;
-import org.antlr.v4.runtime.tree.*;
 
 public class Test {
     public static void main(String[] args) throws Exception {
@@ -31,8 +35,18 @@ public class Test {
 
         ParseTree tree = parser.query(); // begin parsing at init rule
 
+        System.out.println(tree.getChildCount());
 
-        ParseTree c = tree.getChild(0);
+        ParseTree sel = tree.getChild(0) ;
+
+        for (int i = 0; i < sel.getChildCount(); i++) {
+            ParseTree p = sel.getChild(i);
+            if(p instanceof ColnameContext){
+                ColnameContext context = (ColnameContext)p;
+                System.out.println();
+            }
+//            System.out.println(context.getClass().toString());
+        }
 
         System.out.println(tree.toStringTree(parser)); // print LISP-style tree
 
