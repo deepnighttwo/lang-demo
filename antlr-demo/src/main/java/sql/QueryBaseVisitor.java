@@ -1,9 +1,9 @@
-package sql;// Generated from D:/mymise/antlr-demo/src/main/java/sql\Query.g4 by ANTLR 4.5
+package sql;// Generated from G:/mymise/lang-demo/antlr-demo/src/main/java/sql\Query.g4 by ANTLR 4.5
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
 /**
- * This class provides an empty implementation of {@link QueryVisitor},
+ * This class provides an empty implementation of {@link sql.QueryVisitor},
  * which can be extended to create a visitor which only needs to handle a subset
  * of the available methods.
  *
