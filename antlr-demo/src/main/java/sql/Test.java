@@ -8,9 +8,7 @@ package sql;
 
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
-import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ParseTree;
-import sql.QueryParser.ColnameContext;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -19,7 +17,7 @@ public class Test {
     public static void main(String[] args) throws Exception {
         // create a CharStream that reads from standard input
 
-        InputStream is = new ByteArrayInputStream("select one,two ,three from table".getBytes());
+        InputStream is = new ByteArrayInputStream("select a.b.c.asdf,two ,three.ggg from sourcetable".getBytes());
 
         ANTLRInputStream input = new ANTLRInputStream(is);
 
@@ -35,18 +33,8 @@ public class Test {
 
         ParseTree tree = parser.query(); // begin parsing at init rule
 
-        System.out.println(tree.getChildCount());
-
-        ParseTree sel = tree.getChild(0) ;
-
-        for (int i = 0; i < sel.getChildCount(); i++) {
-            ParseTree p = sel.getChild(i);
-            if(p instanceof ColnameContext){
-                ColnameContext context = (ColnameContext)p;
-                System.out.println();
-            }
-//            System.out.println(context.getClass().toString());
-        }
+        JsonSelectVisitor visitor = new JsonSelectVisitor();
+        visitor.visit(tree);
 
 
 
