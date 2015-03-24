@@ -15,7 +15,7 @@ import java.io.InputStream;
  */
 public class LibExprAppMain {
     public static void main(String[] args) throws IOException {
-        InputStream input = new ByteArrayInputStream("1+9*(5+99)\r\n".getBytes());
+        InputStream input = new ByteArrayInputStream("1+9*(5+99)\n".getBytes());
         ANTLRInputStream antlrInputStream = new ANTLRInputStream(input);
         LibExprLexer libExprLexer = new LibExprLexer(antlrInputStream);
         CommonTokenStream tokenStream = new CommonTokenStream(libExprLexer);

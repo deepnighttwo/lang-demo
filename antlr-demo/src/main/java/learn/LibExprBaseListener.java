@@ -28,25 +28,97 @@ public class LibExprBaseListener implements LibExprListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStat(@NotNull LibExprParser.StatContext ctx) { }
+	@Override public void enterPrintExpr(@NotNull LibExprParser.PrintExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStat(@NotNull LibExprParser.StatContext ctx) { }
+	@Override public void exitPrintExpr(@NotNull LibExprParser.PrintExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExpr(@NotNull LibExprParser.ExprContext ctx) { }
+	@Override public void enterAssign(@NotNull LibExprParser.AssignContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExpr(@NotNull LibExprParser.ExprContext ctx) { }
+	@Override public void exitAssign(@NotNull LibExprParser.AssignContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterBlank(@NotNull LibExprParser.BlankContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBlank(@NotNull LibExprParser.BlankContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterParens(@NotNull LibExprParser.ParensContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitParens(@NotNull LibExprParser.ParensContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterMulDiv(@NotNull LibExprParser.MulDivContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitMulDiv(@NotNull LibExprParser.MulDivContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAddSub(@NotNull LibExprParser.AddSubContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAddSub(@NotNull LibExprParser.AddSubContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterId(@NotNull LibExprParser.IdContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitId(@NotNull LibExprParser.IdContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterInt(@NotNull LibExprParser.IntContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitInt(@NotNull LibExprParser.IntContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

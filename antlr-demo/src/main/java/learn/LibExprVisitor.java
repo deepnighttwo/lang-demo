@@ -17,15 +17,59 @@ public interface LibExprVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitProg(@NotNull LibExprParser.ProgContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link learn.LibExprParser#stat}.
+	 * Visit a parse tree produced by the {@code printExpr}
+	 * labeled alternative in {@link learn.LibExprParser#stat}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitStat(@NotNull LibExprParser.StatContext ctx);
+	T visitPrintExpr(@NotNull LibExprParser.PrintExprContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link learn.LibExprParser#expr}.
+	 * Visit a parse tree produced by the {@code assign}
+	 * labeled alternative in {@link learn.LibExprParser#stat}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExpr(@NotNull LibExprParser.ExprContext ctx);
+	T visitAssign(@NotNull LibExprParser.AssignContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code blank}
+	 * labeled alternative in {@link learn.LibExprParser#stat}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBlank(@NotNull LibExprParser.BlankContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code parens}
+	 * labeled alternative in {@link learn.LibExprParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitParens(@NotNull LibExprParser.ParensContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code MulDiv}
+	 * labeled alternative in {@link learn.LibExprParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMulDiv(@NotNull LibExprParser.MulDivContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code AddSub}
+	 * labeled alternative in {@link learn.LibExprParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAddSub(@NotNull LibExprParser.AddSubContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code id}
+	 * labeled alternative in {@link learn.LibExprParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitId(@NotNull LibExprParser.IdContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code int}
+	 * labeled alternative in {@link learn.LibExprParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitInt(@NotNull LibExprParser.IntContext ctx);
 }
