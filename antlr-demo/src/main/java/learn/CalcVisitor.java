@@ -19,6 +19,7 @@ public class CalcVisitor extends LibExprBaseVisitor<Integer> {
 
     @Override
     public Integer visitProg(@NotNull LibExprParser.ProgContext ctx) {
+//        System.out.println(ctx.getText());
         return super.visitProg(ctx);
     }
 
