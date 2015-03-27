@@ -6,6 +6,8 @@ package sql;
  * Time: 11:28
  */
 
+import antlrv4gen.QueryLexer;
+import antlrv4gen.QueryParser;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
@@ -34,8 +36,8 @@ public class Test {
         ParseTree tree = parser.query(); // begin parsing at init rule
 
         JsonSelectVisitor visitor = new JsonSelectVisitor();
-        visitor.visit(tree);
 
+        visitor.visit(tree);
 
 
         System.out.println(tree.toStringTree(parser)); // print LISP-style tree

@@ -1,17 +1,13 @@
-package sql;// Generated from G:/mymise/lang-demo/antlr-demo/src/main/java/sql\Query.g4 by ANTLR 4.5
-
-import org.antlr.v4.runtime.*;
-import org.antlr.v4.runtime.atn.ATN;
-import org.antlr.v4.runtime.atn.ATNDeserializer;
-import org.antlr.v4.runtime.atn.ParserATNSimulator;
-import org.antlr.v4.runtime.atn.PredictionContextCache;
+// Generated from D:/mymise/lang-demo/antlr-demo/src/main/java/sql\Query.g4 by ANTLR 4.5
+package antlrv4gen;
+import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
-import org.antlr.v4.runtime.misc.NotNull;
-import org.antlr.v4.runtime.tree.ParseTreeListener;
-import org.antlr.v4.runtime.tree.ParseTreeVisitor;
-import org.antlr.v4.runtime.tree.TerminalNode;
-
+import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.misc.*;
+import org.antlr.v4.runtime.tree.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class QueryParser extends Parser {
@@ -93,15 +89,15 @@ public class QueryParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_query; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof QueryListener) ((QueryListener)listener).enterQuery(this);
+			if ( listener instanceof QueryListener ) ((QueryListener)listener).enterQuery(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof QueryListener) ((QueryListener)listener).exitQuery(this);
+			if ( listener instanceof QueryListener ) ((QueryListener)listener).exitQuery(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof QueryVisitor) return ((QueryVisitor<? extends T>)visitor).visitQuery(this);
+			if ( visitor instanceof QueryVisitor ) return ((QueryVisitor<? extends T>)visitor).visitQuery(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -143,15 +139,15 @@ public class QueryParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_select; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof QueryListener) ((QueryListener)listener).enterSelect(this);
+			if ( listener instanceof QueryListener ) ((QueryListener)listener).enterSelect(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof QueryListener) ((QueryListener)listener).exitSelect(this);
+			if ( listener instanceof QueryListener ) ((QueryListener)listener).exitSelect(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof QueryVisitor) return ((QueryVisitor<? extends T>)visitor).visitSelect(this);
+			if ( visitor instanceof QueryVisitor ) return ((QueryVisitor<? extends T>)visitor).visitSelect(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -211,15 +207,15 @@ public class QueryParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_colname; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof QueryListener) ((QueryListener)listener).enterColname(this);
+			if ( listener instanceof QueryListener ) ((QueryListener)listener).enterColname(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof QueryListener) ((QueryListener)listener).exitColname(this);
+			if ( listener instanceof QueryListener ) ((QueryListener)listener).exitColname(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof QueryVisitor) return ((QueryVisitor<? extends T>)visitor).visitColname(this);
+			if ( visitor instanceof QueryVisitor ) return ((QueryVisitor<? extends T>)visitor).visitColname(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -270,15 +266,15 @@ public class QueryParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_tablename; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof QueryListener) ((QueryListener)listener).enterTablename(this);
+			if ( listener instanceof QueryListener ) ((QueryListener)listener).enterTablename(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof QueryListener) ((QueryListener)listener).exitTablename(this);
+			if ( listener instanceof QueryListener ) ((QueryListener)listener).exitTablename(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof QueryVisitor) return ((QueryVisitor<? extends T>)visitor).visitTablename(this);
+			if ( visitor instanceof QueryVisitor ) return ((QueryVisitor<? extends T>)visitor).visitTablename(this);
 			else return visitor.visitChildren(this);
 		}
 	}

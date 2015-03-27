@@ -1,4 +1,5 @@
-package learn;// Generated from G:/mymise/lang-demo/antlr-demo/src/main/java/learn\LibExpr.g4 by ANTLR 4.5
+// Generated from D:/mymise/lang-demo/antlr-demo/src/main/java/learn\LibExpr.g4 by ANTLR 4.5
+package antlrv4gen;
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.misc.NotNull;
@@ -6,7 +7,7 @@ import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
- * This class provides an empty implementation of {@link learn.LibExprListener},
+ * This class provides an empty implementation of {@link LibExprListener},
  * which can be extended to create a listener which only needs to handle a subset
  * of the available methods.
  */

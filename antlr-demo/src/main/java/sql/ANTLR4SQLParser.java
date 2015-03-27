@@ -1,5 +1,7 @@
 package sql;
 
+import antlrv4gen.QueryLexer;
+import antlrv4gen.QueryParser;
 import com.google.gson.Gson;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;

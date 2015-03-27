@@ -1,5 +1,6 @@
 package sql;
 
+import antlrv4gen.QueryBaseVisitor;
 import org.antlr.v4.runtime.misc.NotNull;
 
 /**

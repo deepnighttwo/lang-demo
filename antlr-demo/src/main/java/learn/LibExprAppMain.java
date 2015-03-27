@@ -1,5 +1,7 @@
 package learn;
 
+import antlrv4gen.LibExprLexer;
+import antlrv4gen.LibExprParser;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
@@ -15,13 +17,13 @@ import java.io.InputStream;
  */
 public class LibExprAppMain {
     public static void main(String[] args) throws IOException {
+
         InputStream input = new ByteArrayInputStream("1+9*(5+99)\n".getBytes());
         ANTLRInputStream antlrInputStream = new ANTLRInputStream(input);
         LibExprLexer libExprLexer = new LibExprLexer(antlrInputStream);
         CommonTokenStream tokenStream = new CommonTokenStream(libExprLexer);
         LibExprParser parser = new LibExprParser(tokenStream);
         ParseTree prog = parser.prog();
-
 
 
         System.out.println(prog.toStringTree(parser));

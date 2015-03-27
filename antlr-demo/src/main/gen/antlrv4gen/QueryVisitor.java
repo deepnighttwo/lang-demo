@@ -1,4 +1,5 @@
-// Generated from G:/mymise/lang-demo/antlr-demo/src/main/java/sql\Query.g4 by ANTLR 4.5
+// Generated from D:/mymise/lang-demo/antlr-demo/src/main/java/sql\Query.g4 by ANTLR 4.5
+package antlrv4gen;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 

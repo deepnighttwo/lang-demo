@@ -41,7 +41,7 @@
                         </goals>
                         <configuration>
                             <sources>
-                                <source>gen/</source>
+                                <source>src/main/gen</source>
                             </sources>
                         </configuration>
                     </execution>
