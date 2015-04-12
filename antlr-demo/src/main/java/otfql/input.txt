@@ -1,0 +1,8 @@
+select
+     persion.name as name,
+     upper(persion.addr) as addr,
+     persion.workexp[0] as firstwork,
+     isGoodInCome(person.age, person.education, person.income) as isGoodIncome,
+     (person.income-persion.startIncome)/person.workyear as salaryIncreaseYearly
+from persion
+    where (persion.age > 30 and persion.workyear > 7) or persion.location="shanghai"

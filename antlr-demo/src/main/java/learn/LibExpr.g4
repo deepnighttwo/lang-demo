@@ -14,6 +14,10 @@ expr: expr op=(MUL |DIV ) expr # MulDiv
 | '(' expr ')' # parens
 ;
 
+
+test : SELECT;
+
+SELECT : 'select';
 MUL : '*' ; // assigns token name to '*' used above in grammar
 DIV : '/' ;
 ADD : '+' ;
