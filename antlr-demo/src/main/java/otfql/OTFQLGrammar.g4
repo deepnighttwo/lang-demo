@@ -6,13 +6,11 @@ select      : SELECT propsSel (COMMA propsSel)*;
 from        : FROM ID;
 where       : WHERE boolExprs;
 
-numExpr     :
-            | LPAREN numExpr RPAREN                         # parens
-            |numExpr op=(MUL |DIV ) numExpr      # MulDiv
-            | numExpr op=(ADD |SUB ) numExpr      # AddSub
-            | numberLiteral                                 # number
-            | propFullName                                  # propVar
-
+numExpr     : LPAREN numExpr RPAREN                         # Parens
+            | numExpr op=(MUL |DIV ) numExpr                # MulDiv
+            | numExpr op=(ADD |SUB ) numExpr                # AddSub
+            | numberLiteral                                 # Number
+            | propFullName                                  # VarProp
             ;
 
 
