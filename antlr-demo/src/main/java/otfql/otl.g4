@@ -1,4 +1,4 @@
-grammar OTFQLGrammar ;
+grammar OTL ;
 import LiteralVars;
 
 ql          : select from (where)?;

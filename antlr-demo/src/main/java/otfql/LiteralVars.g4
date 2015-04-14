@@ -2,28 +2,6 @@ lexer grammar LiteralVars;
 
 
 // lexer
-
-literal
-    :   integerLiteral
-    |   FloatingPointLiteral
-    |   CharacterLiteral
-    |   StringLiteral
-    |   booleanLiteral
-    |   'null'
-    ;
-
-integerLiteral
-    :   HexLiteral
-    |   OctalLiteral
-    |   DecimalLiteral
-    ;
-
-booleanLiteral
-    :   'true'
-    |   'false'
-    ;
-
-
 HexLiteral : '0' ('x'|'X') HexDigit+ IntegerTypeSuffix? ;
 
 DecimalLiteral : ('0' | '1'..'9' '0'..'9'*) IntegerTypeSuffix? ;
@@ -109,6 +87,7 @@ RBRACK      : ']' ;
 
 TRUE        :'true';
 FALSE       :'false';
+NULL        :'null';
 
 MUL         : '*' ;
 DIV         : '/' ;
