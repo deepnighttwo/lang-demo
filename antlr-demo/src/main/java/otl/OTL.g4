@@ -20,13 +20,13 @@ propVar     : propFullName                                              # Direct
             | StringLiteral                                             # StringVar
             | booleanLiteral                                            # BooleanVar
             | NULL                                                      # NullVar
-            | ID LPAREN propFullName? (COMMA propFullName)* RPAREN       # FuncVar
+            | ID LPAREN propFullName? (COMMA propFullName)* RPAREN      # FuncVar
             ;
 
 propFullName: propName(DOT propName)*;
 
-propName    : ID                                # prop
-            | ID LBRACK integerLiteral RBRACK   # arrayProp
+propName    : ID                                # Prop
+            | ID LBRACK integerLiteral RBRACK   # ArrayProp
             ;
 
 
@@ -35,30 +35,12 @@ propName    : ID                                # prop
 
 boolExprs   : boolExpr (BoolOprt boolExpr)*;
 
-boolExpr    : propVar CompareOprt propVar
-            | NOT boolExpr
-            | LPAREN boolExpr RPAREN
-            | boolExpr BoolOprt boolExpr
+boolExpr    : propVar CompareOprt propVar       # CompareBool
+            | NOT boolExpr                      # NotBool
+            | LPAREN boolExpr RPAREN            # ParenBool
+            | boolExpr BoolOprt boolExpr        # ExprBool
             ;
 
-
-//------------------lexer------------
-
-
-CompareOprt : EQUALS | BIGGER | SMALLER | BIGGEROREQ | SMALLEROREQ | NOTEQUAL;
-
-BoolOprt    : AND | OR ;
-
-
-
-literal
-    :   integerLiteral
-    |   FloatingPointLiteral
-    |   CharacterLiteral
-    |   StringLiteral
-    |   booleanLiteral
-    |   NULL
-    ;
 
 integerLiteral
     :   HexLiteral
@@ -66,14 +48,9 @@ integerLiteral
     |   DecimalLiteral
     ;
 
-numberLiteral
-    :   integerLiteral
-    |   FloatingPointLiteral
-    ;
-
 booleanLiteral
-    :   TRUE
-    |   FALSE
+    :   TRUE                                    # TrueBool
+    |   FALSE                                   # FalseBool
     ;
 
 //-----key words----

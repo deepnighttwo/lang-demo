@@ -98,27 +98,41 @@ public class JSONOTLVisitor extends OTLBaseVisitor<Object> {
     }
 
     @Override
-    public Object visitBoolExpr(@NotNull OTLParser.BoolExprContext ctx) {
-        return super.visitBoolExpr(ctx);
-    }
-
-    @Override
-    public Object visitLiteral(@NotNull OTLParser.LiteralContext ctx) {
-        return super.visitLiteral(ctx);
-    }
-
-    @Override
     public Object visitIntegerLiteral(@NotNull OTLParser.IntegerLiteralContext ctx) {
         return super.visitIntegerLiteral(ctx);
     }
 
+
     @Override
-    public Object visitNumberLiteral(@NotNull OTLParser.NumberLiteralContext ctx) {
-        return super.visitNumberLiteral(ctx);
+    public Object visitFalseBool(@NotNull OTLParser.FalseBoolContext ctx) {
+        return super.visitFalseBool(ctx);
     }
 
     @Override
-    public Object visitBooleanLiteral(@NotNull OTLParser.BooleanLiteralContext ctx) {
-        return super.visitBooleanLiteral(ctx);
+    public Object visitTrueBool(@NotNull OTLParser.TrueBoolContext ctx) {
+        return super.visitTrueBool(ctx);
+    }
+
+    @Override
+    public Object visitNotBool(@NotNull OTLParser.NotBoolContext ctx) {
+        return super.visitNotBool(ctx);
+    }
+
+    @Override
+    public Object visitExprBool(@NotNull OTLParser.ExprBoolContext ctx) {
+        return super.visitExprBool(ctx);
+    }
+
+    @Override
+    public Object visitParenBool(@NotNull OTLParser.ParenBoolContext ctx) {
+        return super.visitParenBool(ctx);
+    }
+
+    @Override
+    public Object visitCompareBool(@NotNull OTLParser.CompareBoolContext ctx) {
+
+        int type = ctx.CompareOprt().getSymbol().getType();
+        System.out.println(type);
+        return super.visitCompareBool(ctx);
     }
 }

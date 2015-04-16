@@ -125,14 +125,14 @@ public interface OTLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitPropFullName(@NotNull OTLParser.PropFullNameContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code prop}
+	 * Visit a parse tree produced by the {@code Prop}
 	 * labeled alternative in {@link OTLParser#propName}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitProp(@NotNull OTLParser.PropContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code arrayProp}
+	 * Visit a parse tree produced by the {@code ArrayProp}
 	 * labeled alternative in {@link OTLParser#propName}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -145,17 +145,33 @@ public interface OTLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitBoolExprs(@NotNull OTLParser.BoolExprsContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link OTLParser#boolExpr}.
+	 * Visit a parse tree produced by the {@code CompareBool}
+	 * labeled alternative in {@link OTLParser#boolExpr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitBoolExpr(@NotNull OTLParser.BoolExprContext ctx);
+	T visitCompareBool(@NotNull OTLParser.CompareBoolContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link OTLParser#literal}.
+	 * Visit a parse tree produced by the {@code ParenBool}
+	 * labeled alternative in {@link OTLParser#boolExpr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitLiteral(@NotNull OTLParser.LiteralContext ctx);
+	T visitParenBool(@NotNull OTLParser.ParenBoolContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code ExprBool}
+	 * labeled alternative in {@link OTLParser#boolExpr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExprBool(@NotNull OTLParser.ExprBoolContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code NotBool}
+	 * labeled alternative in {@link OTLParser#boolExpr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNotBool(@NotNull OTLParser.NotBoolContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link OTLParser#integerLiteral}.
 	 * @param ctx the parse tree
@@ -163,15 +179,17 @@ public interface OTLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitIntegerLiteral(@NotNull OTLParser.IntegerLiteralContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link OTLParser#numberLiteral}.
+	 * Visit a parse tree produced by the {@code TrueBool}
+	 * labeled alternative in {@link OTLParser#booleanLiteral}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitNumberLiteral(@NotNull OTLParser.NumberLiteralContext ctx);
+	T visitTrueBool(@NotNull OTLParser.TrueBoolContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link OTLParser#booleanLiteral}.
+	 * Visit a parse tree produced by the {@code FalseBool}
+	 * labeled alternative in {@link OTLParser#booleanLiteral}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitBooleanLiteral(@NotNull OTLParser.BooleanLiteralContext ctx);
+	T visitFalseBool(@NotNull OTLParser.FalseBoolContext ctx);
 }

@@ -26,12 +26,10 @@ public class OTLParser extends Parser {
 	public static final int
 		RULE_ql = 0, RULE_select = 1, RULE_from = 2, RULE_where = 3, RULE_propsSel = 4, 
 		RULE_propVar = 5, RULE_propFullName = 6, RULE_propName = 7, RULE_boolExprs = 8, 
-		RULE_boolExpr = 9, RULE_literal = 10, RULE_integerLiteral = 11, RULE_numberLiteral = 12, 
-		RULE_booleanLiteral = 13;
+		RULE_boolExpr = 9, RULE_integerLiteral = 10, RULE_booleanLiteral = 11;
 	public static final String[] ruleNames = {
 		"ql", "select", "from", "where", "propsSel", "propVar", "propFullName", 
-		"propName", "boolExprs", "boolExpr", "literal", "integerLiteral", "numberLiteral", 
-		"booleanLiteral"
+		"propName", "boolExprs", "boolExpr", "integerLiteral", "booleanLiteral"
 	};
 
 	private static final String[] _LITERAL_NAMES = {
@@ -133,15 +131,15 @@ public class OTLParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(28); 
+			setState(24); 
 			select();
-			setState(29); 
+			setState(25); 
 			from();
-			setState(31);
+			setState(27);
 			_la = _input.LA(1);
 			if (_la==WHERE) {
 				{
-				setState(30); 
+				setState(26); 
 				where();
 				}
 			}
@@ -197,23 +195,23 @@ public class OTLParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(33); 
+			setState(29); 
 			match(SELECT);
-			setState(34); 
+			setState(30); 
 			propsSel();
-			setState(39);
+			setState(35);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==COMMA) {
 				{
 				{
-				setState(35); 
+				setState(31); 
 				match(COMMA);
-				setState(36); 
+				setState(32); 
 				propsSel();
 				}
 				}
-				setState(41);
+				setState(37);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -258,9 +256,9 @@ public class OTLParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(42); 
+			setState(38); 
 			match(FROM);
-			setState(43); 
+			setState(39); 
 			match(ID);
 			}
 		}
@@ -305,9 +303,9 @@ public class OTLParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(45); 
+			setState(41); 
 			match(WHERE);
-			setState(46); 
+			setState(42); 
 			boolExprs();
 			}
 		}
@@ -354,15 +352,15 @@ public class OTLParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(48); 
+			setState(44); 
 			propVar(0);
-			setState(51);
+			setState(47);
 			_la = _input.LA(1);
 			if (_la==AS) {
 				{
-				setState(49); 
+				setState(45); 
 				match(AS);
-				setState(50); 
+				setState(46); 
 				match(ID);
 				}
 			}
@@ -633,7 +631,7 @@ public class OTLParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(78);
+			setState(74);
 			switch ( getInterpreter().adaptivePredict(_input,5,_ctx) ) {
 			case 1:
 				{
@@ -641,7 +639,7 @@ public class OTLParser extends Parser {
 				_ctx = _localctx;
 				_prevctx = _localctx;
 
-				setState(54); 
+				setState(50); 
 				propFullName();
 				}
 				break;
@@ -650,11 +648,11 @@ public class OTLParser extends Parser {
 				_localctx = new ParensContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(55); 
+				setState(51); 
 				match(LPAREN);
-				setState(56); 
+				setState(52); 
 				propVar(0);
-				setState(57); 
+				setState(53); 
 				match(RPAREN);
 				}
 				break;
@@ -663,7 +661,7 @@ public class OTLParser extends Parser {
 				_localctx = new IntVarContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(59); 
+				setState(55); 
 				integerLiteral();
 				}
 				break;
@@ -672,7 +670,7 @@ public class OTLParser extends Parser {
 				_localctx = new FloatVarContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(60); 
+				setState(56); 
 				match(FloatingPointLiteral);
 				}
 				break;
@@ -681,7 +679,7 @@ public class OTLParser extends Parser {
 				_localctx = new CharVarContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(61); 
+				setState(57); 
 				match(CharacterLiteral);
 				}
 				break;
@@ -690,7 +688,7 @@ public class OTLParser extends Parser {
 				_localctx = new StringVarContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(62); 
+				setState(58); 
 				match(StringLiteral);
 				}
 				break;
@@ -699,7 +697,7 @@ public class OTLParser extends Parser {
 				_localctx = new BooleanVarContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(63); 
+				setState(59); 
 				booleanLiteral();
 				}
 				break;
@@ -708,7 +706,7 @@ public class OTLParser extends Parser {
 				_localctx = new NullVarContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(64); 
+				setState(60); 
 				match(NULL);
 				}
 				break;
@@ -717,42 +715,42 @@ public class OTLParser extends Parser {
 				_localctx = new FuncVarContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(65); 
+				setState(61); 
 				match(ID);
-				setState(66); 
+				setState(62); 
 				match(LPAREN);
-				setState(68);
+				setState(64);
 				_la = _input.LA(1);
 				if (_la==ID) {
 					{
-					setState(67); 
+					setState(63); 
 					propFullName();
 					}
 				}
 
-				setState(74);
+				setState(70);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while (_la==COMMA) {
 					{
 					{
-					setState(70); 
+					setState(66); 
 					match(COMMA);
-					setState(71); 
+					setState(67); 
 					propFullName();
 					}
 					}
-					setState(76);
+					setState(72);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
-				setState(77); 
+				setState(73); 
 				match(RPAREN);
 				}
 				break;
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(88);
+			setState(84);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,7,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
@@ -760,22 +758,22 @@ public class OTLParser extends Parser {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					setState(86);
+					setState(82);
 					switch ( getInterpreter().adaptivePredict(_input,6,_ctx) ) {
 					case 1:
 						{
 						_localctx = new MulDivContext(new PropVarContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_propVar);
-						setState(80);
+						setState(76);
 						if (!(precpred(_ctx, 9))) throw new FailedPredicateException(this, "precpred(_ctx, 9)");
-						setState(81);
+						setState(77);
 						((MulDivContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
 						if ( !(_la==MUL || _la==DIV) ) {
 							((MulDivContext)_localctx).op = (Token)_errHandler.recoverInline(this);
 						}
 						consume();
-						setState(82); 
+						setState(78); 
 						propVar(10);
 						}
 						break;
@@ -783,23 +781,23 @@ public class OTLParser extends Parser {
 						{
 						_localctx = new AddSubContext(new PropVarContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_propVar);
-						setState(83);
+						setState(79);
 						if (!(precpred(_ctx, 8))) throw new FailedPredicateException(this, "precpred(_ctx, 8)");
-						setState(84);
+						setState(80);
 						((AddSubContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
 						if ( !(_la==ADD || _la==SUB) ) {
 							((AddSubContext)_localctx).op = (Token)_errHandler.recoverInline(this);
 						}
 						consume();
-						setState(85); 
+						setState(81); 
 						propVar(9);
 						}
 						break;
 					}
 					} 
 				}
-				setState(90);
+				setState(86);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,7,_ctx);
 			}
@@ -853,23 +851,23 @@ public class OTLParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(91); 
+			setState(87); 
 			propName();
-			setState(96);
+			setState(92);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,8,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					setState(92); 
+					setState(88); 
 					match(DOT);
-					setState(93); 
+					setState(89); 
 					propName();
 					}
 					} 
 				}
-				setState(98);
+				setState(94);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,8,_ctx);
 			}
@@ -897,6 +895,23 @@ public class OTLParser extends Parser {
 			super.copyFrom(ctx);
 		}
 	}
+	public static class PropContext extends PropNameContext {
+		public TerminalNode ID() { return getToken(OTLParser.ID, 0); }
+		public PropContext(PropNameContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OTLListener ) ((OTLListener)listener).enterProp(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OTLListener ) ((OTLListener)listener).exitProp(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof OTLVisitor ) return ((OTLVisitor<? extends T>)visitor).visitProp(this);
+			else return visitor.visitChildren(this);
+		}
+	}
 	public static class ArrayPropContext extends PropNameContext {
 		public TerminalNode ID() { return getToken(OTLParser.ID, 0); }
 		public TerminalNode LBRACK() { return getToken(OTLParser.LBRACK, 0); }
@@ -919,35 +934,18 @@ public class OTLParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
-	public static class PropContext extends PropNameContext {
-		public TerminalNode ID() { return getToken(OTLParser.ID, 0); }
-		public PropContext(PropNameContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof OTLListener ) ((OTLListener)listener).enterProp(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof OTLListener ) ((OTLListener)listener).exitProp(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof OTLVisitor ) return ((OTLVisitor<? extends T>)visitor).visitProp(this);
-			else return visitor.visitChildren(this);
-		}
-	}
 
 	public final PropNameContext propName() throws RecognitionException {
 		PropNameContext _localctx = new PropNameContext(_ctx, getState());
 		enterRule(_localctx, 14, RULE_propName);
 		try {
-			setState(105);
+			setState(101);
 			switch ( getInterpreter().adaptivePredict(_input,9,_ctx) ) {
 			case 1:
 				_localctx = new PropContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(99); 
+				setState(95); 
 				match(ID);
 				}
 				break;
@@ -955,13 +953,13 @@ public class OTLParser extends Parser {
 				_localctx = new ArrayPropContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(100); 
+				setState(96); 
 				match(ID);
-				setState(101); 
+				setState(97); 
 				match(LBRACK);
-				setState(102); 
+				setState(98); 
 				integerLiteral();
-				setState(103); 
+				setState(99); 
 				match(RBRACK);
 				}
 				break;
@@ -1015,21 +1013,21 @@ public class OTLParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(107); 
+			setState(103); 
 			boolExpr(0);
-			setState(112);
+			setState(108);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==BoolOprt) {
 				{
 				{
-				setState(108); 
+				setState(104); 
 				match(BoolOprt);
-				setState(109); 
+				setState(105); 
 				boolExpr(0);
 				}
 				}
-				setState(114);
+				setState(110);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -1047,13 +1045,17 @@ public class OTLParser extends Parser {
 	}
 
 	public static class BoolExprContext extends ParserRuleContext {
-		public TerminalNode NOT() { return getToken(OTLParser.NOT, 0); }
-		public List<BoolExprContext> boolExpr() {
-			return getRuleContexts(BoolExprContext.class);
+		public BoolExprContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
-		public BoolExprContext boolExpr(int i) {
-			return getRuleContext(BoolExprContext.class,i);
+		@Override public int getRuleIndex() { return RULE_boolExpr; }
+	 
+		public BoolExprContext() { }
+		public void copyFrom(BoolExprContext ctx) {
+			super.copyFrom(ctx);
 		}
+	}
+	public static class CompareBoolContext extends BoolExprContext {
 		public List<PropVarContext> propVar() {
 			return getRuleContexts(PropVarContext.class);
 		}
@@ -1061,24 +1063,82 @@ public class OTLParser extends Parser {
 			return getRuleContext(PropVarContext.class,i);
 		}
 		public TerminalNode CompareOprt() { return getToken(OTLParser.CompareOprt, 0); }
-		public TerminalNode LPAREN() { return getToken(OTLParser.LPAREN, 0); }
-		public TerminalNode RPAREN() { return getToken(OTLParser.RPAREN, 0); }
-		public TerminalNode BoolOprt() { return getToken(OTLParser.BoolOprt, 0); }
-		public BoolExprContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_boolExpr; }
+		public CompareBoolContext(BoolExprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof OTLListener ) ((OTLListener)listener).enterBoolExpr(this);
+			if ( listener instanceof OTLListener ) ((OTLListener)listener).enterCompareBool(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof OTLListener ) ((OTLListener)listener).exitBoolExpr(this);
+			if ( listener instanceof OTLListener ) ((OTLListener)listener).exitCompareBool(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof OTLVisitor ) return ((OTLVisitor<? extends T>)visitor).visitBoolExpr(this);
+			if ( visitor instanceof OTLVisitor ) return ((OTLVisitor<? extends T>)visitor).visitCompareBool(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class ParenBoolContext extends BoolExprContext {
+		public TerminalNode LPAREN() { return getToken(OTLParser.LPAREN, 0); }
+		public BoolExprContext boolExpr() {
+			return getRuleContext(BoolExprContext.class,0);
+		}
+		public TerminalNode RPAREN() { return getToken(OTLParser.RPAREN, 0); }
+		public ParenBoolContext(BoolExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OTLListener ) ((OTLListener)listener).enterParenBool(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OTLListener ) ((OTLListener)listener).exitParenBool(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof OTLVisitor ) return ((OTLVisitor<? extends T>)visitor).visitParenBool(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class ExprBoolContext extends BoolExprContext {
+		public List<BoolExprContext> boolExpr() {
+			return getRuleContexts(BoolExprContext.class);
+		}
+		public BoolExprContext boolExpr(int i) {
+			return getRuleContext(BoolExprContext.class,i);
+		}
+		public TerminalNode BoolOprt() { return getToken(OTLParser.BoolOprt, 0); }
+		public ExprBoolContext(BoolExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OTLListener ) ((OTLListener)listener).enterExprBool(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OTLListener ) ((OTLListener)listener).exitExprBool(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof OTLVisitor ) return ((OTLVisitor<? extends T>)visitor).visitExprBool(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class NotBoolContext extends BoolExprContext {
+		public TerminalNode NOT() { return getToken(OTLParser.NOT, 0); }
+		public BoolExprContext boolExpr() {
+			return getRuleContext(BoolExprContext.class,0);
+		}
+		public NotBoolContext(BoolExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OTLListener ) ((OTLListener)listener).enterNotBool(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OTLListener ) ((OTLListener)listener).exitNotBool(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof OTLVisitor ) return ((OTLVisitor<? extends T>)visitor).visitNotBool(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1098,39 +1158,49 @@ public class OTLParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(126);
+			setState(122);
 			switch ( getInterpreter().adaptivePredict(_input,11,_ctx) ) {
 			case 1:
 				{
-				setState(116); 
+				_localctx = new NotBoolContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
+
+				setState(112); 
 				match(NOT);
-				setState(117); 
+				setState(113); 
 				boolExpr(3);
 				}
 				break;
 			case 2:
 				{
-				setState(118); 
+				_localctx = new CompareBoolContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
+				setState(114); 
 				propVar(0);
-				setState(119); 
+				setState(115); 
 				match(CompareOprt);
-				setState(120); 
+				setState(116); 
 				propVar(0);
 				}
 				break;
 			case 3:
 				{
-				setState(122); 
+				_localctx = new ParenBoolContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
+				setState(118); 
 				match(LPAREN);
-				setState(123); 
+				setState(119); 
 				boolExpr(0);
-				setState(124); 
+				setState(120); 
 				match(RPAREN);
 				}
 				break;
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(133);
+			setState(129);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,12,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
@@ -1139,18 +1209,18 @@ public class OTLParser extends Parser {
 					_prevctx = _localctx;
 					{
 					{
-					_localctx = new BoolExprContext(_parentctx, _parentState);
+					_localctx = new ExprBoolContext(new BoolExprContext(_parentctx, _parentState));
 					pushNewRecursionContext(_localctx, _startState, RULE_boolExpr);
-					setState(128);
+					setState(124);
 					if (!(precpred(_ctx, 1))) throw new FailedPredicateException(this, "precpred(_ctx, 1)");
-					setState(129); 
+					setState(125); 
 					match(BoolOprt);
-					setState(130); 
+					setState(126); 
 					boolExpr(2);
 					}
 					} 
 				}
-				setState(135);
+				setState(131);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,12,_ctx);
 			}
@@ -1163,102 +1233,6 @@ public class OTLParser extends Parser {
 		}
 		finally {
 			unrollRecursionContexts(_parentctx);
-		}
-		return _localctx;
-	}
-
-	public static class LiteralContext extends ParserRuleContext {
-		public IntegerLiteralContext integerLiteral() {
-			return getRuleContext(IntegerLiteralContext.class,0);
-		}
-		public TerminalNode FloatingPointLiteral() { return getToken(OTLParser.FloatingPointLiteral, 0); }
-		public TerminalNode CharacterLiteral() { return getToken(OTLParser.CharacterLiteral, 0); }
-		public TerminalNode StringLiteral() { return getToken(OTLParser.StringLiteral, 0); }
-		public BooleanLiteralContext booleanLiteral() {
-			return getRuleContext(BooleanLiteralContext.class,0);
-		}
-		public TerminalNode NULL() { return getToken(OTLParser.NULL, 0); }
-		public LiteralContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_literal; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof OTLListener ) ((OTLListener)listener).enterLiteral(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof OTLListener ) ((OTLListener)listener).exitLiteral(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof OTLVisitor ) return ((OTLVisitor<? extends T>)visitor).visitLiteral(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final LiteralContext literal() throws RecognitionException {
-		LiteralContext _localctx = new LiteralContext(_ctx, getState());
-		enterRule(_localctx, 20, RULE_literal);
-		try {
-			setState(142);
-			switch (_input.LA(1)) {
-			case HexLiteral:
-			case DecimalLiteral:
-			case OctalLiteral:
-				enterOuterAlt(_localctx, 1);
-				{
-				setState(136); 
-				integerLiteral();
-				}
-				break;
-			case FloatingPointLiteral:
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(137); 
-				match(FloatingPointLiteral);
-				}
-				break;
-			case CharacterLiteral:
-				enterOuterAlt(_localctx, 3);
-				{
-				setState(138); 
-				match(CharacterLiteral);
-				}
-				break;
-			case StringLiteral:
-				enterOuterAlt(_localctx, 4);
-				{
-				setState(139); 
-				match(StringLiteral);
-				}
-				break;
-			case TRUE:
-			case FALSE:
-				enterOuterAlt(_localctx, 5);
-				{
-				setState(140); 
-				booleanLiteral();
-				}
-				break;
-			case NULL:
-				enterOuterAlt(_localctx, 6);
-				{
-				setState(141); 
-				match(NULL);
-				}
-				break;
-			default:
-				throw new NoViableAltException(this);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
 		}
 		return _localctx;
 	}
@@ -1288,12 +1262,12 @@ public class OTLParser extends Parser {
 
 	public final IntegerLiteralContext integerLiteral() throws RecognitionException {
 		IntegerLiteralContext _localctx = new IntegerLiteralContext(_ctx, getState());
-		enterRule(_localctx, 22, RULE_integerLiteral);
+		enterRule(_localctx, 20, RULE_integerLiteral);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(144);
+			setState(132);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << HexLiteral) | (1L << DecimalLiteral) | (1L << OctalLiteral))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -1312,102 +1286,76 @@ public class OTLParser extends Parser {
 		return _localctx;
 	}
 
-	public static class NumberLiteralContext extends ParserRuleContext {
-		public IntegerLiteralContext integerLiteral() {
-			return getRuleContext(IntegerLiteralContext.class,0);
-		}
-		public TerminalNode FloatingPointLiteral() { return getToken(OTLParser.FloatingPointLiteral, 0); }
-		public NumberLiteralContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_numberLiteral; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof OTLListener ) ((OTLListener)listener).enterNumberLiteral(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof OTLListener ) ((OTLListener)listener).exitNumberLiteral(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof OTLVisitor ) return ((OTLVisitor<? extends T>)visitor).visitNumberLiteral(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final NumberLiteralContext numberLiteral() throws RecognitionException {
-		NumberLiteralContext _localctx = new NumberLiteralContext(_ctx, getState());
-		enterRule(_localctx, 24, RULE_numberLiteral);
-		try {
-			setState(148);
-			switch (_input.LA(1)) {
-			case HexLiteral:
-			case DecimalLiteral:
-			case OctalLiteral:
-				enterOuterAlt(_localctx, 1);
-				{
-				setState(146); 
-				integerLiteral();
-				}
-				break;
-			case FloatingPointLiteral:
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(147); 
-				match(FloatingPointLiteral);
-				}
-				break;
-			default:
-				throw new NoViableAltException(this);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
 	public static class BooleanLiteralContext extends ParserRuleContext {
-		public TerminalNode TRUE() { return getToken(OTLParser.TRUE, 0); }
-		public TerminalNode FALSE() { return getToken(OTLParser.FALSE, 0); }
 		public BooleanLiteralContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_booleanLiteral; }
+	 
+		public BooleanLiteralContext() { }
+		public void copyFrom(BooleanLiteralContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class TrueBoolContext extends BooleanLiteralContext {
+		public TerminalNode TRUE() { return getToken(OTLParser.TRUE, 0); }
+		public TrueBoolContext(BooleanLiteralContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof OTLListener ) ((OTLListener)listener).enterBooleanLiteral(this);
+			if ( listener instanceof OTLListener ) ((OTLListener)listener).enterTrueBool(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof OTLListener ) ((OTLListener)listener).exitBooleanLiteral(this);
+			if ( listener instanceof OTLListener ) ((OTLListener)listener).exitTrueBool(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof OTLVisitor ) return ((OTLVisitor<? extends T>)visitor).visitBooleanLiteral(this);
+			if ( visitor instanceof OTLVisitor ) return ((OTLVisitor<? extends T>)visitor).visitTrueBool(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class FalseBoolContext extends BooleanLiteralContext {
+		public TerminalNode FALSE() { return getToken(OTLParser.FALSE, 0); }
+		public FalseBoolContext(BooleanLiteralContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OTLListener ) ((OTLListener)listener).enterFalseBool(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OTLListener ) ((OTLListener)listener).exitFalseBool(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof OTLVisitor ) return ((OTLVisitor<? extends T>)visitor).visitFalseBool(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final BooleanLiteralContext booleanLiteral() throws RecognitionException {
 		BooleanLiteralContext _localctx = new BooleanLiteralContext(_ctx, getState());
-		enterRule(_localctx, 26, RULE_booleanLiteral);
-		int _la;
+		enterRule(_localctx, 22, RULE_booleanLiteral);
 		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(150);
-			_la = _input.LA(1);
-			if ( !(_la==TRUE || _la==FALSE) ) {
-			_errHandler.recoverInline(this);
-			}
-			consume();
+			setState(136);
+			switch (_input.LA(1)) {
+			case TRUE:
+				_localctx = new TrueBoolContext(_localctx);
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(134); 
+				match(TRUE);
+				}
+				break;
+			case FALSE:
+				_localctx = new FalseBoolContext(_localctx);
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(135); 
+				match(FALSE);
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1448,50 +1396,43 @@ public class OTLParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3&\u009b\4\2\t\2\4"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3&\u008d\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
-		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\3\2\3\2\3\2\5\2\"\n\2\3\3\3\3"+
-		"\3\3\3\3\7\3(\n\3\f\3\16\3+\13\3\3\4\3\4\3\4\3\5\3\5\3\5\3\6\3\6\3\6\5"+
-		"\6\66\n\6\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7"+
-		"\5\7G\n\7\3\7\3\7\7\7K\n\7\f\7\16\7N\13\7\3\7\5\7Q\n\7\3\7\3\7\3\7\3\7"+
-		"\3\7\3\7\7\7Y\n\7\f\7\16\7\\\13\7\3\b\3\b\3\b\7\ba\n\b\f\b\16\bd\13\b"+
-		"\3\t\3\t\3\t\3\t\3\t\3\t\5\tl\n\t\3\n\3\n\3\n\7\nq\n\n\f\n\16\nt\13\n"+
-		"\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\5\13\u0081\n\13"+
-		"\3\13\3\13\3\13\7\13\u0086\n\13\f\13\16\13\u0089\13\13\3\f\3\f\3\f\3\f"+
-		"\3\f\3\f\5\f\u0091\n\f\3\r\3\r\3\16\3\16\5\16\u0097\n\16\3\17\3\17\3\17"+
-		"\2\4\f\24\20\2\4\6\b\n\f\16\20\22\24\26\30\32\34\2\6\3\2!\"\3\2#$\3\2"+
-		"\5\7\3\2\36\37\u00a7\2\36\3\2\2\2\4#\3\2\2\2\6,\3\2\2\2\b/\3\2\2\2\n\62"+
-		"\3\2\2\2\fP\3\2\2\2\16]\3\2\2\2\20k\3\2\2\2\22m\3\2\2\2\24\u0080\3\2\2"+
-		"\2\26\u0090\3\2\2\2\30\u0092\3\2\2\2\32\u0096\3\2\2\2\34\u0098\3\2\2\2"+
-		"\36\37\5\4\3\2\37!\5\6\4\2 \"\5\b\5\2! \3\2\2\2!\"\3\2\2\2\"\3\3\2\2\2"+
-		"#$\7\24\2\2$)\5\n\6\2%&\7\25\2\2&(\5\n\6\2\'%\3\2\2\2(+\3\2\2\2)\'\3\2"+
-		"\2\2)*\3\2\2\2*\5\3\2\2\2+)\3\2\2\2,-\7\26\2\2-.\7%\2\2.\7\3\2\2\2/\60"+
-		"\7\27\2\2\60\61\5\22\n\2\61\t\3\2\2\2\62\65\5\f\7\2\63\64\7\30\2\2\64"+
-		"\66\7%\2\2\65\63\3\2\2\2\65\66\3\2\2\2\66\13\3\2\2\2\678\b\7\1\28Q\5\16"+
-		"\b\29:\7\31\2\2:;\5\f\7\2;<\7\32\2\2<Q\3\2\2\2=Q\5\30\r\2>Q\7\b\2\2?Q"+
-		"\7\t\2\2@Q\7\n\2\2AQ\5\34\17\2BQ\7 \2\2CD\7%\2\2DF\7\31\2\2EG\5\16\b\2"+
-		"FE\3\2\2\2FG\3\2\2\2GL\3\2\2\2HI\7\25\2\2IK\5\16\b\2JH\3\2\2\2KN\3\2\2"+
-		"\2LJ\3\2\2\2LM\3\2\2\2MO\3\2\2\2NL\3\2\2\2OQ\7\32\2\2P\67\3\2\2\2P9\3"+
-		"\2\2\2P=\3\2\2\2P>\3\2\2\2P?\3\2\2\2P@\3\2\2\2PA\3\2\2\2PB\3\2\2\2PC\3"+
-		"\2\2\2QZ\3\2\2\2RS\f\13\2\2ST\t\2\2\2TY\5\f\7\fUV\f\n\2\2VW\t\3\2\2WY"+
-		"\5\f\7\13XR\3\2\2\2XU\3\2\2\2Y\\\3\2\2\2ZX\3\2\2\2Z[\3\2\2\2[\r\3\2\2"+
-		"\2\\Z\3\2\2\2]b\5\20\t\2^_\7\33\2\2_a\5\20\t\2`^\3\2\2\2ad\3\2\2\2b`\3"+
-		"\2\2\2bc\3\2\2\2c\17\3\2\2\2db\3\2\2\2el\7%\2\2fg\7%\2\2gh\7\34\2\2hi"+
-		"\5\30\r\2ij\7\35\2\2jl\3\2\2\2ke\3\2\2\2kf\3\2\2\2l\21\3\2\2\2mr\5\24"+
-		"\13\2no\7\4\2\2oq\5\24\13\2pn\3\2\2\2qt\3\2\2\2rp\3\2\2\2rs\3\2\2\2s\23"+
-		"\3\2\2\2tr\3\2\2\2uv\b\13\1\2vw\7\21\2\2w\u0081\5\24\13\5xy\5\f\7\2yz"+
-		"\7\3\2\2z{\5\f\7\2{\u0081\3\2\2\2|}\7\31\2\2}~\5\24\13\2~\177\7\32\2\2"+
-		"\177\u0081\3\2\2\2\u0080u\3\2\2\2\u0080x\3\2\2\2\u0080|\3\2\2\2\u0081"+
-		"\u0087\3\2\2\2\u0082\u0083\f\3\2\2\u0083\u0084\7\4\2\2\u0084\u0086\5\24"+
-		"\13\4\u0085\u0082\3\2\2\2\u0086\u0089\3\2\2\2\u0087\u0085\3\2\2\2\u0087"+
-		"\u0088\3\2\2\2\u0088\25\3\2\2\2\u0089\u0087\3\2\2\2\u008a\u0091\5\30\r"+
-		"\2\u008b\u0091\7\b\2\2\u008c\u0091\7\t\2\2\u008d\u0091\7\n\2\2\u008e\u0091"+
-		"\5\34\17\2\u008f\u0091\7 \2\2\u0090\u008a\3\2\2\2\u0090\u008b\3\2\2\2"+
-		"\u0090\u008c\3\2\2\2\u0090\u008d\3\2\2\2\u0090\u008e\3\2\2\2\u0090\u008f"+
-		"\3\2\2\2\u0091\27\3\2\2\2\u0092\u0093\t\4\2\2\u0093\31\3\2\2\2\u0094\u0097"+
-		"\5\30\r\2\u0095\u0097\7\b\2\2\u0096\u0094\3\2\2\2\u0096\u0095\3\2\2\2"+
-		"\u0097\33\3\2\2\2\u0098\u0099\t\5\2\2\u0099\35\3\2\2\2\21!)\65FLPXZbk"+
-		"r\u0080\u0087\u0090\u0096";
+		"\13\4\f\t\f\4\r\t\r\3\2\3\2\3\2\5\2\36\n\2\3\3\3\3\3\3\3\3\7\3$\n\3\f"+
+		"\3\16\3\'\13\3\3\4\3\4\3\4\3\5\3\5\3\5\3\6\3\6\3\6\5\6\62\n\6\3\7\3\7"+
+		"\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\5\7C\n\7\3\7\3\7"+
+		"\7\7G\n\7\f\7\16\7J\13\7\3\7\5\7M\n\7\3\7\3\7\3\7\3\7\3\7\3\7\7\7U\n\7"+
+		"\f\7\16\7X\13\7\3\b\3\b\3\b\7\b]\n\b\f\b\16\b`\13\b\3\t\3\t\3\t\3\t\3"+
+		"\t\3\t\5\th\n\t\3\n\3\n\3\n\7\nm\n\n\f\n\16\np\13\n\3\13\3\13\3\13\3\13"+
+		"\3\13\3\13\3\13\3\13\3\13\3\13\3\13\5\13}\n\13\3\13\3\13\3\13\7\13\u0082"+
+		"\n\13\f\13\16\13\u0085\13\13\3\f\3\f\3\r\3\r\5\r\u008b\n\r\3\r\2\4\f\24"+
+		"\16\2\4\6\b\n\f\16\20\22\24\26\30\2\5\3\2!\"\3\2#$\3\2\5\7\u0096\2\32"+
+		"\3\2\2\2\4\37\3\2\2\2\6(\3\2\2\2\b+\3\2\2\2\n.\3\2\2\2\fL\3\2\2\2\16Y"+
+		"\3\2\2\2\20g\3\2\2\2\22i\3\2\2\2\24|\3\2\2\2\26\u0086\3\2\2\2\30\u008a"+
+		"\3\2\2\2\32\33\5\4\3\2\33\35\5\6\4\2\34\36\5\b\5\2\35\34\3\2\2\2\35\36"+
+		"\3\2\2\2\36\3\3\2\2\2\37 \7\24\2\2 %\5\n\6\2!\"\7\25\2\2\"$\5\n\6\2#!"+
+		"\3\2\2\2$\'\3\2\2\2%#\3\2\2\2%&\3\2\2\2&\5\3\2\2\2\'%\3\2\2\2()\7\26\2"+
+		"\2)*\7%\2\2*\7\3\2\2\2+,\7\27\2\2,-\5\22\n\2-\t\3\2\2\2.\61\5\f\7\2/\60"+
+		"\7\30\2\2\60\62\7%\2\2\61/\3\2\2\2\61\62\3\2\2\2\62\13\3\2\2\2\63\64\b"+
+		"\7\1\2\64M\5\16\b\2\65\66\7\31\2\2\66\67\5\f\7\2\678\7\32\2\28M\3\2\2"+
+		"\29M\5\26\f\2:M\7\b\2\2;M\7\t\2\2<M\7\n\2\2=M\5\30\r\2>M\7 \2\2?@\7%\2"+
+		"\2@B\7\31\2\2AC\5\16\b\2BA\3\2\2\2BC\3\2\2\2CH\3\2\2\2DE\7\25\2\2EG\5"+
+		"\16\b\2FD\3\2\2\2GJ\3\2\2\2HF\3\2\2\2HI\3\2\2\2IK\3\2\2\2JH\3\2\2\2KM"+
+		"\7\32\2\2L\63\3\2\2\2L\65\3\2\2\2L9\3\2\2\2L:\3\2\2\2L;\3\2\2\2L<\3\2"+
+		"\2\2L=\3\2\2\2L>\3\2\2\2L?\3\2\2\2MV\3\2\2\2NO\f\13\2\2OP\t\2\2\2PU\5"+
+		"\f\7\fQR\f\n\2\2RS\t\3\2\2SU\5\f\7\13TN\3\2\2\2TQ\3\2\2\2UX\3\2\2\2VT"+
+		"\3\2\2\2VW\3\2\2\2W\r\3\2\2\2XV\3\2\2\2Y^\5\20\t\2Z[\7\33\2\2[]\5\20\t"+
+		"\2\\Z\3\2\2\2]`\3\2\2\2^\\\3\2\2\2^_\3\2\2\2_\17\3\2\2\2`^\3\2\2\2ah\7"+
+		"%\2\2bc\7%\2\2cd\7\34\2\2de\5\26\f\2ef\7\35\2\2fh\3\2\2\2ga\3\2\2\2gb"+
+		"\3\2\2\2h\21\3\2\2\2in\5\24\13\2jk\7\4\2\2km\5\24\13\2lj\3\2\2\2mp\3\2"+
+		"\2\2nl\3\2\2\2no\3\2\2\2o\23\3\2\2\2pn\3\2\2\2qr\b\13\1\2rs\7\21\2\2s"+
+		"}\5\24\13\5tu\5\f\7\2uv\7\3\2\2vw\5\f\7\2w}\3\2\2\2xy\7\31\2\2yz\5\24"+
+		"\13\2z{\7\32\2\2{}\3\2\2\2|q\3\2\2\2|t\3\2\2\2|x\3\2\2\2}\u0083\3\2\2"+
+		"\2~\177\f\3\2\2\177\u0080\7\4\2\2\u0080\u0082\5\24\13\4\u0081~\3\2\2\2"+
+		"\u0082\u0085\3\2\2\2\u0083\u0081\3\2\2\2\u0083\u0084\3\2\2\2\u0084\25"+
+		"\3\2\2\2\u0085\u0083\3\2\2\2\u0086\u0087\t\4\2\2\u0087\27\3\2\2\2\u0088"+
+		"\u008b\7\36\2\2\u0089\u008b\7\37\2\2\u008a\u0088\3\2\2\2\u008a\u0089\3"+
+		"\2\2\2\u008b\31\3\2\2\2\20\35%\61BHLTV^gn|\u0083\u008a";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

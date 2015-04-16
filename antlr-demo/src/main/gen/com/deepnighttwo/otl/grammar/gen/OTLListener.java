@@ -201,25 +201,25 @@ public interface OTLListener extends ParseTreeListener {
 	 */
 	void exitPropFullName(@NotNull OTLParser.PropFullNameContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code prop}
+	 * Enter a parse tree produced by the {@code Prop}
 	 * labeled alternative in {@link OTLParser#propName}.
 	 * @param ctx the parse tree
 	 */
 	void enterProp(@NotNull OTLParser.PropContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code prop}
+	 * Exit a parse tree produced by the {@code Prop}
 	 * labeled alternative in {@link OTLParser#propName}.
 	 * @param ctx the parse tree
 	 */
 	void exitProp(@NotNull OTLParser.PropContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code arrayProp}
+	 * Enter a parse tree produced by the {@code ArrayProp}
 	 * labeled alternative in {@link OTLParser#propName}.
 	 * @param ctx the parse tree
 	 */
 	void enterArrayProp(@NotNull OTLParser.ArrayPropContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code arrayProp}
+	 * Exit a parse tree produced by the {@code ArrayProp}
 	 * labeled alternative in {@link OTLParser#propName}.
 	 * @param ctx the parse tree
 	 */
@@ -235,25 +235,53 @@ public interface OTLListener extends ParseTreeListener {
 	 */
 	void exitBoolExprs(@NotNull OTLParser.BoolExprsContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link OTLParser#boolExpr}.
+	 * Enter a parse tree produced by the {@code CompareBool}
+	 * labeled alternative in {@link OTLParser#boolExpr}.
 	 * @param ctx the parse tree
 	 */
-	void enterBoolExpr(@NotNull OTLParser.BoolExprContext ctx);
+	void enterCompareBool(@NotNull OTLParser.CompareBoolContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link OTLParser#boolExpr}.
+	 * Exit a parse tree produced by the {@code CompareBool}
+	 * labeled alternative in {@link OTLParser#boolExpr}.
 	 * @param ctx the parse tree
 	 */
-	void exitBoolExpr(@NotNull OTLParser.BoolExprContext ctx);
+	void exitCompareBool(@NotNull OTLParser.CompareBoolContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link OTLParser#literal}.
+	 * Enter a parse tree produced by the {@code ParenBool}
+	 * labeled alternative in {@link OTLParser#boolExpr}.
 	 * @param ctx the parse tree
 	 */
-	void enterLiteral(@NotNull OTLParser.LiteralContext ctx);
+	void enterParenBool(@NotNull OTLParser.ParenBoolContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link OTLParser#literal}.
+	 * Exit a parse tree produced by the {@code ParenBool}
+	 * labeled alternative in {@link OTLParser#boolExpr}.
 	 * @param ctx the parse tree
 	 */
-	void exitLiteral(@NotNull OTLParser.LiteralContext ctx);
+	void exitParenBool(@NotNull OTLParser.ParenBoolContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code ExprBool}
+	 * labeled alternative in {@link OTLParser#boolExpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterExprBool(@NotNull OTLParser.ExprBoolContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ExprBool}
+	 * labeled alternative in {@link OTLParser#boolExpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitExprBool(@NotNull OTLParser.ExprBoolContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code NotBool}
+	 * labeled alternative in {@link OTLParser#boolExpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterNotBool(@NotNull OTLParser.NotBoolContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code NotBool}
+	 * labeled alternative in {@link OTLParser#boolExpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitNotBool(@NotNull OTLParser.NotBoolContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link OTLParser#integerLiteral}.
 	 * @param ctx the parse tree
@@ -265,23 +293,27 @@ public interface OTLListener extends ParseTreeListener {
 	 */
 	void exitIntegerLiteral(@NotNull OTLParser.IntegerLiteralContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link OTLParser#numberLiteral}.
+	 * Enter a parse tree produced by the {@code TrueBool}
+	 * labeled alternative in {@link OTLParser#booleanLiteral}.
 	 * @param ctx the parse tree
 	 */
-	void enterNumberLiteral(@NotNull OTLParser.NumberLiteralContext ctx);
+	void enterTrueBool(@NotNull OTLParser.TrueBoolContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link OTLParser#numberLiteral}.
+	 * Exit a parse tree produced by the {@code TrueBool}
+	 * labeled alternative in {@link OTLParser#booleanLiteral}.
 	 * @param ctx the parse tree
 	 */
-	void exitNumberLiteral(@NotNull OTLParser.NumberLiteralContext ctx);
+	void exitTrueBool(@NotNull OTLParser.TrueBoolContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link OTLParser#booleanLiteral}.
+	 * Enter a parse tree produced by the {@code FalseBool}
+	 * labeled alternative in {@link OTLParser#booleanLiteral}.
 	 * @param ctx the parse tree
 	 */
-	void enterBooleanLiteral(@NotNull OTLParser.BooleanLiteralContext ctx);
+	void enterFalseBool(@NotNull OTLParser.FalseBoolContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link OTLParser#booleanLiteral}.
+	 * Exit a parse tree produced by the {@code FalseBool}
+	 * labeled alternative in {@link OTLParser#booleanLiteral}.
 	 * @param ctx the parse tree
 	 */
-	void exitBooleanLiteral(@NotNull OTLParser.BooleanLiteralContext ctx);
+	void exitFalseBool(@NotNull OTLParser.FalseBoolContext ctx);
 }

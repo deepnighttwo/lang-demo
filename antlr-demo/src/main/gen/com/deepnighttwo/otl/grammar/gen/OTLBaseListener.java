@@ -257,25 +257,49 @@ public class OTLBaseListener implements OTLListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBoolExpr(@NotNull OTLParser.BoolExprContext ctx) { }
+	@Override public void enterCompareBool(@NotNull OTLParser.CompareBoolContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBoolExpr(@NotNull OTLParser.BoolExprContext ctx) { }
+	@Override public void exitCompareBool(@NotNull OTLParser.CompareBoolContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLiteral(@NotNull OTLParser.LiteralContext ctx) { }
+	@Override public void enterParenBool(@NotNull OTLParser.ParenBoolContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLiteral(@NotNull OTLParser.LiteralContext ctx) { }
+	@Override public void exitParenBool(@NotNull OTLParser.ParenBoolContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterExprBool(@NotNull OTLParser.ExprBoolContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitExprBool(@NotNull OTLParser.ExprBoolContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterNotBool(@NotNull OTLParser.NotBoolContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitNotBool(@NotNull OTLParser.NotBoolContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -293,25 +317,25 @@ public class OTLBaseListener implements OTLListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNumberLiteral(@NotNull OTLParser.NumberLiteralContext ctx) { }
+	@Override public void enterTrueBool(@NotNull OTLParser.TrueBoolContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNumberLiteral(@NotNull OTLParser.NumberLiteralContext ctx) { }
+	@Override public void exitTrueBool(@NotNull OTLParser.TrueBoolContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBooleanLiteral(@NotNull OTLParser.BooleanLiteralContext ctx) { }
+	@Override public void enterFalseBool(@NotNull OTLParser.FalseBoolContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBooleanLiteral(@NotNull OTLParser.BooleanLiteralContext ctx) { }
+	@Override public void exitFalseBool(@NotNull OTLParser.FalseBoolContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

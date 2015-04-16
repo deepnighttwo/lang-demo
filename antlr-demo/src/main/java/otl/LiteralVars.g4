@@ -1,7 +1,9 @@
 lexer grammar LiteralVars;
 
+CompareOprt : EQUALS | BIGGER | SMALLER | BIGGEROREQ | SMALLEROREQ | NOTEQUAL;
 
-// lexer
+BoolOprt    : AND | OR ;
+
 HexLiteral : '0' ('x'|'X') HexDigit+ IntegerTypeSuffix? ;
 
 DecimalLiteral : ('0' | '1'..'9' '0'..'9'*) IntegerTypeSuffix? ;

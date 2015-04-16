@@ -158,14 +158,28 @@ public class OTLBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements OT
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitBoolExpr(@NotNull OTLParser.BoolExprContext ctx) { return visitChildren(ctx); }
+	@Override public T visitCompareBool(@NotNull OTLParser.CompareBoolContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitLiteral(@NotNull OTLParser.LiteralContext ctx) { return visitChildren(ctx); }
+	@Override public T visitParenBool(@NotNull OTLParser.ParenBoolContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitExprBool(@NotNull OTLParser.ExprBoolContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitNotBool(@NotNull OTLParser.NotBoolContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -179,12 +193,12 @@ public class OTLBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements OT
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitNumberLiteral(@NotNull OTLParser.NumberLiteralContext ctx) { return visitChildren(ctx); }
+	@Override public T visitTrueBool(@NotNull OTLParser.TrueBoolContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitBooleanLiteral(@NotNull OTLParser.BooleanLiteralContext ctx) { return visitChildren(ctx); }
+	@Override public T visitFalseBool(@NotNull OTLParser.FalseBoolContext ctx) { return visitChildren(ctx); }
 }
