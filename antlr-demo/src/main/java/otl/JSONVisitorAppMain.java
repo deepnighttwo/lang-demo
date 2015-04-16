@@ -57,6 +57,8 @@ public class JSONVisitorAppMain {
 
         visitor.visit(selectContext);
 
+        visitor.visit(whereContext);
+
         System.out.println(from);
 
 

@@ -17,12 +17,11 @@ public class OTLParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		CompareOprt=1, BoolOprt=2, HexLiteral=3, DecimalLiteral=4, OctalLiteral=5, 
-		FloatingPointLiteral=6, CharacterLiteral=7, StringLiteral=8, EQUALS=9, 
-		BIGGER=10, SMALLER=11, BIGGEROREQ=12, SMALLEROREQ=13, NOTEQUAL=14, NOT=15, 
-		AND=16, OR=17, SELECT=18, COMMA=19, FROM=20, WHERE=21, AS=22, LPAREN=23, 
-		RPAREN=24, DOT=25, LBRACK=26, RBRACK=27, TRUE=28, FALSE=29, NULL=30, MUL=31, 
-		DIV=32, ADD=33, SUB=34, ID=35, WS=36;
+		HexLiteral=1, DecimalLiteral=2, OctalLiteral=3, FloatingPointLiteral=4, 
+		CharacterLiteral=5, StringLiteral=6, EQUALS=7, BIGGER=8, SMALLER=9, BIGGEROREQ=10, 
+		SMALLEROREQ=11, NOTEQUAL=12, NOT=13, AND=14, OR=15, SELECT=16, COMMA=17, 
+		FROM=18, WHERE=19, AS=20, LPAREN=21, RPAREN=22, DOT=23, LBRACK=24, RBRACK=25, 
+		TRUE=26, FALSE=27, NULL=28, MUL=29, DIV=30, ADD=31, SUB=32, ID=33, WS=34;
 	public static final int
 		RULE_ql = 0, RULE_select = 1, RULE_from = 2, RULE_where = 3, RULE_propsSel = 4, 
 		RULE_propVar = 5, RULE_propFullName = 6, RULE_propName = 7, RULE_boolExprs = 8, 
@@ -33,18 +32,17 @@ public class OTLParser extends Parser {
 	};
 
 	private static final String[] _LITERAL_NAMES = {
-		null, null, null, null, null, null, null, null, null, "'='", "'>'", "'<'", 
-		"'>='", "'<='", "'!='", "'not'", "'and'", "'or'", "'select'", "','", "'from'", 
+		null, null, null, null, null, null, null, "'='", "'>'", "'<'", "'>='", 
+		"'<='", "'!='", "'not'", "'and'", "'or'", "'select'", "','", "'from'", 
 		"'where'", "'as'", "'('", "')'", "'.'", "'['", "']'", "'true'", "'false'", 
 		"'null'", "'*'", "'/'", "'+'", "'-'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
-		null, "CompareOprt", "BoolOprt", "HexLiteral", "DecimalLiteral", "OctalLiteral", 
-		"FloatingPointLiteral", "CharacterLiteral", "StringLiteral", "EQUALS", 
-		"BIGGER", "SMALLER", "BIGGEROREQ", "SMALLEROREQ", "NOTEQUAL", "NOT", "AND", 
-		"OR", "SELECT", "COMMA", "FROM", "WHERE", "AS", "LPAREN", "RPAREN", "DOT", 
-		"LBRACK", "RBRACK", "TRUE", "FALSE", "NULL", "MUL", "DIV", "ADD", "SUB", 
-		"ID", "WS"
+		null, "HexLiteral", "DecimalLiteral", "OctalLiteral", "FloatingPointLiteral", 
+		"CharacterLiteral", "StringLiteral", "EQUALS", "BIGGER", "SMALLER", "BIGGEROREQ", 
+		"SMALLEROREQ", "NOTEQUAL", "NOT", "AND", "OR", "SELECT", "COMMA", "FROM", 
+		"WHERE", "AS", "LPAREN", "RPAREN", "DOT", "LBRACK", "RBRACK", "TRUE", 
+		"FALSE", "NULL", "MUL", "DIV", "ADD", "SUB", "ID", "WS"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -977,15 +975,20 @@ public class OTLParser extends Parser {
 	}
 
 	public static class BoolExprsContext extends ParserRuleContext {
+		public Token boolOprt;
 		public List<BoolExprContext> boolExpr() {
 			return getRuleContexts(BoolExprContext.class);
 		}
 		public BoolExprContext boolExpr(int i) {
 			return getRuleContext(BoolExprContext.class,i);
 		}
-		public List<TerminalNode> BoolOprt() { return getTokens(OTLParser.BoolOprt); }
-		public TerminalNode BoolOprt(int i) {
-			return getToken(OTLParser.BoolOprt, i);
+		public List<TerminalNode> AND() { return getTokens(OTLParser.AND); }
+		public TerminalNode AND(int i) {
+			return getToken(OTLParser.AND, i);
+		}
+		public List<TerminalNode> OR() { return getTokens(OTLParser.OR); }
+		public TerminalNode OR(int i) {
+			return getToken(OTLParser.OR, i);
 		}
 		public BoolExprsContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -1018,11 +1021,16 @@ public class OTLParser extends Parser {
 			setState(108);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==BoolOprt) {
+			while (_la==AND || _la==OR) {
 				{
 				{
-				setState(104); 
-				match(BoolOprt);
+				setState(104);
+				((BoolExprsContext)_localctx).boolOprt = _input.LT(1);
+				_la = _input.LA(1);
+				if ( !(_la==AND || _la==OR) ) {
+					((BoolExprsContext)_localctx).boolOprt = (Token)_errHandler.recoverInline(this);
+				}
+				consume();
 				setState(105); 
 				boolExpr(0);
 				}
@@ -1056,13 +1064,19 @@ public class OTLParser extends Parser {
 		}
 	}
 	public static class CompareBoolContext extends BoolExprContext {
+		public Token compareOpr;
 		public List<PropVarContext> propVar() {
 			return getRuleContexts(PropVarContext.class);
 		}
 		public PropVarContext propVar(int i) {
 			return getRuleContext(PropVarContext.class,i);
 		}
-		public TerminalNode CompareOprt() { return getToken(OTLParser.CompareOprt, 0); }
+		public TerminalNode EQUALS() { return getToken(OTLParser.EQUALS, 0); }
+		public TerminalNode BIGGER() { return getToken(OTLParser.BIGGER, 0); }
+		public TerminalNode SMALLER() { return getToken(OTLParser.SMALLER, 0); }
+		public TerminalNode BIGGEROREQ() { return getToken(OTLParser.BIGGEROREQ, 0); }
+		public TerminalNode SMALLEROREQ() { return getToken(OTLParser.SMALLEROREQ, 0); }
+		public TerminalNode NOTEQUAL() { return getToken(OTLParser.NOTEQUAL, 0); }
 		public CompareBoolContext(BoolExprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
@@ -1100,13 +1114,15 @@ public class OTLParser extends Parser {
 		}
 	}
 	public static class ExprBoolContext extends BoolExprContext {
+		public Token boolOprt;
 		public List<BoolExprContext> boolExpr() {
 			return getRuleContexts(BoolExprContext.class);
 		}
 		public BoolExprContext boolExpr(int i) {
 			return getRuleContext(BoolExprContext.class,i);
 		}
-		public TerminalNode BoolOprt() { return getToken(OTLParser.BoolOprt, 0); }
+		public TerminalNode AND() { return getToken(OTLParser.AND, 0); }
+		public TerminalNode OR() { return getToken(OTLParser.OR, 0); }
 		public ExprBoolContext(BoolExprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
@@ -1154,6 +1170,7 @@ public class OTLParser extends Parser {
 		BoolExprContext _prevctx = _localctx;
 		int _startState = 18;
 		enterRecursionRule(_localctx, 18, RULE_boolExpr, _p);
+		int _la;
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
@@ -1179,8 +1196,13 @@ public class OTLParser extends Parser {
 				_prevctx = _localctx;
 				setState(114); 
 				propVar(0);
-				setState(115); 
-				match(CompareOprt);
+				setState(115);
+				((CompareBoolContext)_localctx).compareOpr = _input.LT(1);
+				_la = _input.LA(1);
+				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << EQUALS) | (1L << BIGGER) | (1L << SMALLER) | (1L << BIGGEROREQ) | (1L << SMALLEROREQ) | (1L << NOTEQUAL))) != 0)) ) {
+					((CompareBoolContext)_localctx).compareOpr = (Token)_errHandler.recoverInline(this);
+				}
+				consume();
 				setState(116); 
 				propVar(0);
 				}
@@ -1213,8 +1235,13 @@ public class OTLParser extends Parser {
 					pushNewRecursionContext(_localctx, _startState, RULE_boolExpr);
 					setState(124);
 					if (!(precpred(_ctx, 1))) throw new FailedPredicateException(this, "precpred(_ctx, 1)");
-					setState(125); 
-					match(BoolOprt);
+					setState(125);
+					((ExprBoolContext)_localctx).boolOprt = _input.LT(1);
+					_la = _input.LA(1);
+					if ( !(_la==AND || _la==OR) ) {
+						((ExprBoolContext)_localctx).boolOprt = (Token)_errHandler.recoverInline(this);
+					}
+					consume();
 					setState(126); 
 					boolExpr(2);
 					}
@@ -1396,7 +1423,7 @@ public class OTLParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3&\u008d\4\2\t\2\4"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3$\u008d\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\4\f\t\f\4\r\t\r\3\2\3\2\3\2\5\2\36\n\2\3\3\3\3\3\3\3\3\7\3$\n\3\f"+
 		"\3\16\3\'\13\3\3\4\3\4\3\4\3\5\3\5\3\5\3\6\3\6\3\6\5\6\62\n\6\3\7\3\7"+
@@ -1406,33 +1433,33 @@ public class OTLParser extends Parser {
 		"\t\3\t\5\th\n\t\3\n\3\n\3\n\7\nm\n\n\f\n\16\np\13\n\3\13\3\13\3\13\3\13"+
 		"\3\13\3\13\3\13\3\13\3\13\3\13\3\13\5\13}\n\13\3\13\3\13\3\13\7\13\u0082"+
 		"\n\13\f\13\16\13\u0085\13\13\3\f\3\f\3\r\3\r\5\r\u008b\n\r\3\r\2\4\f\24"+
-		"\16\2\4\6\b\n\f\16\20\22\24\26\30\2\5\3\2!\"\3\2#$\3\2\5\7\u0096\2\32"+
-		"\3\2\2\2\4\37\3\2\2\2\6(\3\2\2\2\b+\3\2\2\2\n.\3\2\2\2\fL\3\2\2\2\16Y"+
-		"\3\2\2\2\20g\3\2\2\2\22i\3\2\2\2\24|\3\2\2\2\26\u0086\3\2\2\2\30\u008a"+
-		"\3\2\2\2\32\33\5\4\3\2\33\35\5\6\4\2\34\36\5\b\5\2\35\34\3\2\2\2\35\36"+
-		"\3\2\2\2\36\3\3\2\2\2\37 \7\24\2\2 %\5\n\6\2!\"\7\25\2\2\"$\5\n\6\2#!"+
-		"\3\2\2\2$\'\3\2\2\2%#\3\2\2\2%&\3\2\2\2&\5\3\2\2\2\'%\3\2\2\2()\7\26\2"+
-		"\2)*\7%\2\2*\7\3\2\2\2+,\7\27\2\2,-\5\22\n\2-\t\3\2\2\2.\61\5\f\7\2/\60"+
-		"\7\30\2\2\60\62\7%\2\2\61/\3\2\2\2\61\62\3\2\2\2\62\13\3\2\2\2\63\64\b"+
-		"\7\1\2\64M\5\16\b\2\65\66\7\31\2\2\66\67\5\f\7\2\678\7\32\2\28M\3\2\2"+
-		"\29M\5\26\f\2:M\7\b\2\2;M\7\t\2\2<M\7\n\2\2=M\5\30\r\2>M\7 \2\2?@\7%\2"+
-		"\2@B\7\31\2\2AC\5\16\b\2BA\3\2\2\2BC\3\2\2\2CH\3\2\2\2DE\7\25\2\2EG\5"+
-		"\16\b\2FD\3\2\2\2GJ\3\2\2\2HF\3\2\2\2HI\3\2\2\2IK\3\2\2\2JH\3\2\2\2KM"+
-		"\7\32\2\2L\63\3\2\2\2L\65\3\2\2\2L9\3\2\2\2L:\3\2\2\2L;\3\2\2\2L<\3\2"+
-		"\2\2L=\3\2\2\2L>\3\2\2\2L?\3\2\2\2MV\3\2\2\2NO\f\13\2\2OP\t\2\2\2PU\5"+
-		"\f\7\fQR\f\n\2\2RS\t\3\2\2SU\5\f\7\13TN\3\2\2\2TQ\3\2\2\2UX\3\2\2\2VT"+
-		"\3\2\2\2VW\3\2\2\2W\r\3\2\2\2XV\3\2\2\2Y^\5\20\t\2Z[\7\33\2\2[]\5\20\t"+
-		"\2\\Z\3\2\2\2]`\3\2\2\2^\\\3\2\2\2^_\3\2\2\2_\17\3\2\2\2`^\3\2\2\2ah\7"+
-		"%\2\2bc\7%\2\2cd\7\34\2\2de\5\26\f\2ef\7\35\2\2fh\3\2\2\2ga\3\2\2\2gb"+
-		"\3\2\2\2h\21\3\2\2\2in\5\24\13\2jk\7\4\2\2km\5\24\13\2lj\3\2\2\2mp\3\2"+
-		"\2\2nl\3\2\2\2no\3\2\2\2o\23\3\2\2\2pn\3\2\2\2qr\b\13\1\2rs\7\21\2\2s"+
-		"}\5\24\13\5tu\5\f\7\2uv\7\3\2\2vw\5\f\7\2w}\3\2\2\2xy\7\31\2\2yz\5\24"+
-		"\13\2z{\7\32\2\2{}\3\2\2\2|q\3\2\2\2|t\3\2\2\2|x\3\2\2\2}\u0083\3\2\2"+
-		"\2~\177\f\3\2\2\177\u0080\7\4\2\2\u0080\u0082\5\24\13\4\u0081~\3\2\2\2"+
-		"\u0082\u0085\3\2\2\2\u0083\u0081\3\2\2\2\u0083\u0084\3\2\2\2\u0084\25"+
-		"\3\2\2\2\u0085\u0083\3\2\2\2\u0086\u0087\t\4\2\2\u0087\27\3\2\2\2\u0088"+
-		"\u008b\7\36\2\2\u0089\u008b\7\37\2\2\u008a\u0088\3\2\2\2\u008a\u0089\3"+
-		"\2\2\2\u008b\31\3\2\2\2\20\35%\61BHLTV^gn|\u0083\u008a";
+		"\16\2\4\6\b\n\f\16\20\22\24\26\30\2\7\3\2\37 \3\2!\"\3\2\20\21\3\2\t\16"+
+		"\3\2\3\5\u0096\2\32\3\2\2\2\4\37\3\2\2\2\6(\3\2\2\2\b+\3\2\2\2\n.\3\2"+
+		"\2\2\fL\3\2\2\2\16Y\3\2\2\2\20g\3\2\2\2\22i\3\2\2\2\24|\3\2\2\2\26\u0086"+
+		"\3\2\2\2\30\u008a\3\2\2\2\32\33\5\4\3\2\33\35\5\6\4\2\34\36\5\b\5\2\35"+
+		"\34\3\2\2\2\35\36\3\2\2\2\36\3\3\2\2\2\37 \7\22\2\2 %\5\n\6\2!\"\7\23"+
+		"\2\2\"$\5\n\6\2#!\3\2\2\2$\'\3\2\2\2%#\3\2\2\2%&\3\2\2\2&\5\3\2\2\2\'"+
+		"%\3\2\2\2()\7\24\2\2)*\7#\2\2*\7\3\2\2\2+,\7\25\2\2,-\5\22\n\2-\t\3\2"+
+		"\2\2.\61\5\f\7\2/\60\7\26\2\2\60\62\7#\2\2\61/\3\2\2\2\61\62\3\2\2\2\62"+
+		"\13\3\2\2\2\63\64\b\7\1\2\64M\5\16\b\2\65\66\7\27\2\2\66\67\5\f\7\2\67"+
+		"8\7\30\2\28M\3\2\2\29M\5\26\f\2:M\7\6\2\2;M\7\7\2\2<M\7\b\2\2=M\5\30\r"+
+		"\2>M\7\36\2\2?@\7#\2\2@B\7\27\2\2AC\5\16\b\2BA\3\2\2\2BC\3\2\2\2CH\3\2"+
+		"\2\2DE\7\23\2\2EG\5\16\b\2FD\3\2\2\2GJ\3\2\2\2HF\3\2\2\2HI\3\2\2\2IK\3"+
+		"\2\2\2JH\3\2\2\2KM\7\30\2\2L\63\3\2\2\2L\65\3\2\2\2L9\3\2\2\2L:\3\2\2"+
+		"\2L;\3\2\2\2L<\3\2\2\2L=\3\2\2\2L>\3\2\2\2L?\3\2\2\2MV\3\2\2\2NO\f\13"+
+		"\2\2OP\t\2\2\2PU\5\f\7\fQR\f\n\2\2RS\t\3\2\2SU\5\f\7\13TN\3\2\2\2TQ\3"+
+		"\2\2\2UX\3\2\2\2VT\3\2\2\2VW\3\2\2\2W\r\3\2\2\2XV\3\2\2\2Y^\5\20\t\2Z"+
+		"[\7\31\2\2[]\5\20\t\2\\Z\3\2\2\2]`\3\2\2\2^\\\3\2\2\2^_\3\2\2\2_\17\3"+
+		"\2\2\2`^\3\2\2\2ah\7#\2\2bc\7#\2\2cd\7\32\2\2de\5\26\f\2ef\7\33\2\2fh"+
+		"\3\2\2\2ga\3\2\2\2gb\3\2\2\2h\21\3\2\2\2in\5\24\13\2jk\t\4\2\2km\5\24"+
+		"\13\2lj\3\2\2\2mp\3\2\2\2nl\3\2\2\2no\3\2\2\2o\23\3\2\2\2pn\3\2\2\2qr"+
+		"\b\13\1\2rs\7\17\2\2s}\5\24\13\5tu\5\f\7\2uv\t\5\2\2vw\5\f\7\2w}\3\2\2"+
+		"\2xy\7\27\2\2yz\5\24\13\2z{\7\30\2\2{}\3\2\2\2|q\3\2\2\2|t\3\2\2\2|x\3"+
+		"\2\2\2}\u0083\3\2\2\2~\177\f\3\2\2\177\u0080\t\4\2\2\u0080\u0082\5\24"+
+		"\13\4\u0081~\3\2\2\2\u0082\u0085\3\2\2\2\u0083\u0081\3\2\2\2\u0083\u0084"+
+		"\3\2\2\2\u0084\25\3\2\2\2\u0085\u0083\3\2\2\2\u0086\u0087\t\6\2\2\u0087"+
+		"\27\3\2\2\2\u0088\u008b\7\34\2\2\u0089\u008b\7\35\2\2\u008a\u0088\3\2"+
+		"\2\2\u008a\u0089\3\2\2\2\u008b\31\3\2\2\2\20\35%\61BHLTV^gn|\u0083\u008a";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

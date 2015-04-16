@@ -1,6 +1,7 @@
 package otl;
 
 import com.deepnighttwo.otl.grammar.gen.OTLBaseVisitor;
+import com.deepnighttwo.otl.grammar.gen.OTLLexer;
 import com.deepnighttwo.otl.grammar.gen.OTLParser;
 import org.antlr.v4.runtime.misc.NotNull;
 
@@ -99,40 +100,70 @@ public class JSONOTLVisitor extends OTLBaseVisitor<Object> {
 
     @Override
     public Object visitIntegerLiteral(@NotNull OTLParser.IntegerLiteralContext ctx) {
-        return super.visitIntegerLiteral(ctx);
+        return Integer.parseInt(ctx.getText());
     }
 
 
     @Override
     public Object visitFalseBool(@NotNull OTLParser.FalseBoolContext ctx) {
-        return super.visitFalseBool(ctx);
+        return Boolean.FALSE;
     }
 
     @Override
     public Object visitTrueBool(@NotNull OTLParser.TrueBoolContext ctx) {
-        return super.visitTrueBool(ctx);
+        return Boolean.TRUE;
     }
 
     @Override
     public Object visitNotBool(@NotNull OTLParser.NotBoolContext ctx) {
-        return super.visitNotBool(ctx);
+        return !(Boolean) this.visit(ctx.boolExpr());
     }
 
     @Override
     public Object visitExprBool(@NotNull OTLParser.ExprBoolContext ctx) {
-        return super.visitExprBool(ctx);
+        Boolean var1 = (Boolean) this.visit(ctx.boolExpr(0));
+
+        Boolean var2 = (Boolean) this.visit(ctx.boolExpr(1));
+
+        int type = ctx.boolOprt.getType();
+        switch (type) {
+            case OTLLexer.AND:
+                return var1 && var2;
+            case OTLLexer.OR:
+                return var1 || var2;
+            default:
+                throw new RuntimeException("Unsupported operation " + ctx.boolOprt.getText());
+        }
     }
 
     @Override
     public Object visitParenBool(@NotNull OTLParser.ParenBoolContext ctx) {
-        return super.visitParenBool(ctx);
+        return this.visit(ctx.boolExpr());
     }
 
     @Override
     public Object visitCompareBool(@NotNull OTLParser.CompareBoolContext ctx) {
 
-        int type = ctx.CompareOprt().getSymbol().getType();
-        System.out.println(type);
-        return super.visitCompareBool(ctx);
+        Comparable var1 = (Comparable) this.visit(ctx.propVar(0));
+
+        Comparable var2 = (Comparable) this.visit(ctx.propVar(1));
+
+        int type = ctx.compareOpr.getType();
+        switch (type) {
+            case OTLLexer.SMALLER:
+                return var1.compareTo(var2) < 0;
+            case OTLLexer.SMALLEROREQ:
+                return var1.compareTo(var2) <= 0;
+            case OTLLexer.EQUALS:
+                return var1.compareTo(var2) == 0;
+            case OTLLexer.NOTEQUAL:
+                return var1.compareTo(var2) != 0;
+            case OTLLexer.BIGGER:
+                return var1.compareTo(var2) > 0;
+            case OTLLexer.BIGGEROREQ:
+                return var1.compareTo(var2) >= 0;
+            default:
+                throw new RuntimeException("Unsupported operation " + ctx.compareOpr.getText());
+        }
     }
 }

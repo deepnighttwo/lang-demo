@@ -1,8 +1,38 @@
 lexer grammar LiteralVars;
 
-CompareOprt : EQUALS | BIGGER | SMALLER | BIGGEROREQ | SMALLEROREQ | NOTEQUAL;
 
-BoolOprt    : AND | OR ;
+
+EQUALS      : '=';
+BIGGER      : '>';
+SMALLER     : '<';
+BIGGEROREQ  : '>=';
+SMALLEROREQ : '<=';
+NOTEQUAL    : '!=';
+
+NOT         : 'not';
+AND         : 'and';
+OR          : 'or';
+
+SELECT      : 'select' ;
+COMMA       : ',' ;
+FROM        : 'from' ;
+WHERE       : 'where' ;
+AS          : 'as' ;
+LPAREN      : '(' ;
+RPAREN      : ')' ;
+DOT         : '.' ;
+LBRACK      : '[' ;
+RBRACK      : ']' ;
+
+TRUE        :'true';
+FALSE       :'false';
+NULL        :'null';
+
+MUL         : '*' ;
+DIV         : '/' ;
+ADD         : '+' ;
+SUB         : '-' ;
+
 
 HexLiteral : '0' ('x'|'X') HexDigit+ IntegerTypeSuffix? ;
 
@@ -62,39 +92,6 @@ fragment
 UnicodeEscape
     :   '\\' 'u' HexDigit HexDigit HexDigit HexDigit
     ;
-
-
-
-EQUALS      : '=';
-BIGGER      : '>';
-SMALLER     : '<';
-BIGGEROREQ  : '>=';
-SMALLEROREQ : '<=';
-NOTEQUAL    : '!=';
-
-NOT         : 'not';
-AND         : 'and';
-OR          : 'or';
-
-SELECT      : 'select' ;
-COMMA       : ',' ;
-FROM        : 'from' ;
-WHERE       : 'where' ;
-AS          : 'as' ;
-LPAREN      : '(' ;
-RPAREN      : ')' ;
-DOT         : '.' ;
-LBRACK      : '[' ;
-RBRACK      : ']' ;
-
-TRUE        :'true';
-FALSE       :'false';
-NULL        :'null';
-
-MUL         : '*' ;
-DIV         : '/' ;
-ADD         : '+' ;
-SUB         : '-' ;
 
 ID          : [a-zA-Z] [a-zA-Z0-9]*;
 

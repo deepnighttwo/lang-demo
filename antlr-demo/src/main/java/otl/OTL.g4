@@ -33,12 +33,12 @@ propName    : ID                                # Prop
 
 // bool part
 
-boolExprs   : boolExpr (BoolOprt boolExpr)*;
+boolExprs   : boolExpr (boolOprt=(AND|OR) boolExpr)*;
 
-boolExpr    : propVar CompareOprt propVar       # CompareBool
-            | NOT boolExpr                      # NotBool
-            | LPAREN boolExpr RPAREN            # ParenBool
-            | boolExpr BoolOprt boolExpr        # ExprBool
+boolExpr    : propVar compareOpr=(EQUALS | BIGGER | SMALLER | BIGGEROREQ | SMALLEROREQ | NOTEQUAL) propVar       # CompareBool
+            | NOT boolExpr                                                                                       # NotBool
+            | LPAREN boolExpr RPAREN                                                                             # ParenBool
+            | boolExpr boolOprt=(AND|OR) boolExpr                                                                # ExprBool
             ;
 
 
