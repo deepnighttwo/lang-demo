@@ -1,4 +1,4 @@
-// Generated from G:/mymise/lang-demo/antlr-demo/src/main/java/otfql\OTL.g4 by ANTLR 4.5
+// Generated from G:/mymise/lang-demo/antlr-demo/src/main/java/otl\OTL.g4 by ANTLR 4.5
 package com.deepnighttwo.otl.grammar.gen;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
@@ -49,66 +49,6 @@ public interface OTLListener extends ParseTreeListener {
 	 */
 	void exitWhere(@NotNull OTLParser.WhereContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code VarProp}
-	 * labeled alternative in {@link OTLParser#numExpr}.
-	 * @param ctx the parse tree
-	 */
-	void enterVarProp(@NotNull OTLParser.VarPropContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code VarProp}
-	 * labeled alternative in {@link OTLParser#numExpr}.
-	 * @param ctx the parse tree
-	 */
-	void exitVarProp(@NotNull OTLParser.VarPropContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code Number}
-	 * labeled alternative in {@link OTLParser#numExpr}.
-	 * @param ctx the parse tree
-	 */
-	void enterNumber(@NotNull OTLParser.NumberContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code Number}
-	 * labeled alternative in {@link OTLParser#numExpr}.
-	 * @param ctx the parse tree
-	 */
-	void exitNumber(@NotNull OTLParser.NumberContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code MulDiv}
-	 * labeled alternative in {@link OTLParser#numExpr}.
-	 * @param ctx the parse tree
-	 */
-	void enterMulDiv(@NotNull OTLParser.MulDivContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code MulDiv}
-	 * labeled alternative in {@link OTLParser#numExpr}.
-	 * @param ctx the parse tree
-	 */
-	void exitMulDiv(@NotNull OTLParser.MulDivContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code AddSub}
-	 * labeled alternative in {@link OTLParser#numExpr}.
-	 * @param ctx the parse tree
-	 */
-	void enterAddSub(@NotNull OTLParser.AddSubContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code AddSub}
-	 * labeled alternative in {@link OTLParser#numExpr}.
-	 * @param ctx the parse tree
-	 */
-	void exitAddSub(@NotNull OTLParser.AddSubContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code Parens}
-	 * labeled alternative in {@link OTLParser#numExpr}.
-	 * @param ctx the parse tree
-	 */
-	void enterParens(@NotNull OTLParser.ParensContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code Parens}
-	 * labeled alternative in {@link OTLParser#numExpr}.
-	 * @param ctx the parse tree
-	 */
-	void exitParens(@NotNull OTLParser.ParensContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link OTLParser#propsSel}.
 	 * @param ctx the parse tree
 	 */
@@ -118,6 +58,90 @@ public interface OTLListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitPropsSel(@NotNull OTLParser.PropsSelContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code FloatVar}
+	 * labeled alternative in {@link OTLParser#propVar}.
+	 * @param ctx the parse tree
+	 */
+	void enterFloatVar(@NotNull OTLParser.FloatVarContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code FloatVar}
+	 * labeled alternative in {@link OTLParser#propVar}.
+	 * @param ctx the parse tree
+	 */
+	void exitFloatVar(@NotNull OTLParser.FloatVarContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code NullVar}
+	 * labeled alternative in {@link OTLParser#propVar}.
+	 * @param ctx the parse tree
+	 */
+	void enterNullVar(@NotNull OTLParser.NullVarContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code NullVar}
+	 * labeled alternative in {@link OTLParser#propVar}.
+	 * @param ctx the parse tree
+	 */
+	void exitNullVar(@NotNull OTLParser.NullVarContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code CharVar}
+	 * labeled alternative in {@link OTLParser#propVar}.
+	 * @param ctx the parse tree
+	 */
+	void enterCharVar(@NotNull OTLParser.CharVarContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code CharVar}
+	 * labeled alternative in {@link OTLParser#propVar}.
+	 * @param ctx the parse tree
+	 */
+	void exitCharVar(@NotNull OTLParser.CharVarContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code FuncVar}
+	 * labeled alternative in {@link OTLParser#propVar}.
+	 * @param ctx the parse tree
+	 */
+	void enterFuncVar(@NotNull OTLParser.FuncVarContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code FuncVar}
+	 * labeled alternative in {@link OTLParser#propVar}.
+	 * @param ctx the parse tree
+	 */
+	void exitFuncVar(@NotNull OTLParser.FuncVarContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code MulDiv}
+	 * labeled alternative in {@link OTLParser#propVar}.
+	 * @param ctx the parse tree
+	 */
+	void enterMulDiv(@NotNull OTLParser.MulDivContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code MulDiv}
+	 * labeled alternative in {@link OTLParser#propVar}.
+	 * @param ctx the parse tree
+	 */
+	void exitMulDiv(@NotNull OTLParser.MulDivContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code AddSub}
+	 * labeled alternative in {@link OTLParser#propVar}.
+	 * @param ctx the parse tree
+	 */
+	void enterAddSub(@NotNull OTLParser.AddSubContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code AddSub}
+	 * labeled alternative in {@link OTLParser#propVar}.
+	 * @param ctx the parse tree
+	 */
+	void exitAddSub(@NotNull OTLParser.AddSubContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Parens}
+	 * labeled alternative in {@link OTLParser#propVar}.
+	 * @param ctx the parse tree
+	 */
+	void enterParens(@NotNull OTLParser.ParensContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Parens}
+	 * labeled alternative in {@link OTLParser#propVar}.
+	 * @param ctx the parse tree
+	 */
+	void exitParens(@NotNull OTLParser.ParensContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code DirectPropVar}
 	 * labeled alternative in {@link OTLParser#propVar}.
@@ -131,41 +155,41 @@ public interface OTLListener extends ParseTreeListener {
 	 */
 	void exitDirectPropVar(@NotNull OTLParser.DirectPropVarContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code NumExprVar}
+	 * Enter a parse tree produced by the {@code IntVar}
 	 * labeled alternative in {@link OTLParser#propVar}.
 	 * @param ctx the parse tree
 	 */
-	void enterNumExprVar(@NotNull OTLParser.NumExprVarContext ctx);
+	void enterIntVar(@NotNull OTLParser.IntVarContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code NumExprVar}
+	 * Exit a parse tree produced by the {@code IntVar}
 	 * labeled alternative in {@link OTLParser#propVar}.
 	 * @param ctx the parse tree
 	 */
-	void exitNumExprVar(@NotNull OTLParser.NumExprVarContext ctx);
+	void exitIntVar(@NotNull OTLParser.IntVarContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code literalVar}
+	 * Enter a parse tree produced by the {@code BooleanVar}
 	 * labeled alternative in {@link OTLParser#propVar}.
 	 * @param ctx the parse tree
 	 */
-	void enterLiteralVar(@NotNull OTLParser.LiteralVarContext ctx);
+	void enterBooleanVar(@NotNull OTLParser.BooleanVarContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code literalVar}
+	 * Exit a parse tree produced by the {@code BooleanVar}
 	 * labeled alternative in {@link OTLParser#propVar}.
 	 * @param ctx the parse tree
 	 */
-	void exitLiteralVar(@NotNull OTLParser.LiteralVarContext ctx);
+	void exitBooleanVar(@NotNull OTLParser.BooleanVarContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code FuncVar}
+	 * Enter a parse tree produced by the {@code StringVar}
 	 * labeled alternative in {@link OTLParser#propVar}.
 	 * @param ctx the parse tree
 	 */
-	void enterFuncVar(@NotNull OTLParser.FuncVarContext ctx);
+	void enterStringVar(@NotNull OTLParser.StringVarContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code FuncVar}
+	 * Exit a parse tree produced by the {@code StringVar}
 	 * labeled alternative in {@link OTLParser#propVar}.
 	 * @param ctx the parse tree
 	 */
-	void exitFuncVar(@NotNull OTLParser.FuncVarContext ctx);
+	void exitStringVar(@NotNull OTLParser.StringVarContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link OTLParser#propFullName}.
 	 * @param ctx the parse tree

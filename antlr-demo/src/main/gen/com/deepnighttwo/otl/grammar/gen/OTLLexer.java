@@ -1,4 +1,4 @@
-// Generated from G:/mymise/lang-demo/antlr-demo/src/main/java/otfql\OTL.g4 by ANTLR 4.5
+// Generated from G:/mymise/lang-demo/antlr-demo/src/main/java/otl\OTL.g4 by ANTLR 4.5
 package com.deepnighttwo.otl.grammar.gen;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;

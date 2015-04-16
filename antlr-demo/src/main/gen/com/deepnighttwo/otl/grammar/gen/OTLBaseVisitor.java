@@ -1,4 +1,4 @@
-// Generated from G:/mymise/lang-demo/antlr-demo/src/main/java/otfql\OTL.g4 by ANTLR 4.5
+// Generated from G:/mymise/lang-demo/antlr-demo/src/main/java/otl\OTL.g4 by ANTLR 4.5
 package com.deepnighttwo.otl.grammar.gen;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
@@ -46,14 +46,35 @@ public class OTLBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements OT
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitVarProp(@NotNull OTLParser.VarPropContext ctx) { return visitChildren(ctx); }
+	@Override public T visitPropsSel(@NotNull OTLParser.PropsSelContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitNumber(@NotNull OTLParser.NumberContext ctx) { return visitChildren(ctx); }
+	@Override public T visitFloatVar(@NotNull OTLParser.FloatVarContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitNullVar(@NotNull OTLParser.NullVarContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitCharVar(@NotNull OTLParser.CharVarContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitFuncVar(@NotNull OTLParser.FuncVarContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -81,13 +102,6 @@ public class OTLBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements OT
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitPropsSel(@NotNull OTLParser.PropsSelContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
 	@Override public T visitDirectPropVar(@NotNull OTLParser.DirectPropVarContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
@@ -95,21 +109,21 @@ public class OTLBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements OT
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitNumExprVar(@NotNull OTLParser.NumExprVarContext ctx) { return visitChildren(ctx); }
+	@Override public T visitIntVar(@NotNull OTLParser.IntVarContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitLiteralVar(@NotNull OTLParser.LiteralVarContext ctx) { return visitChildren(ctx); }
+	@Override public T visitBooleanVar(@NotNull OTLParser.BooleanVarContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitFuncVar(@NotNull OTLParser.FuncVarContext ctx) { return visitChildren(ctx); }
+	@Override public T visitStringVar(@NotNull OTLParser.StringVarContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

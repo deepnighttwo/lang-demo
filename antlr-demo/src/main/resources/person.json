@@ -1,0 +1,24 @@
+{
+  "name": "Jim Green",
+  "addr": "Shanghai Pudong",
+  "workexp": [
+    {
+      "companyName": "Sybase",
+      "position": "Software Developer"
+    },
+    {
+      "companyName": "Google",
+      "position": "Software Developer"
+    },
+    {
+      "companyName": "Baidu",
+      "position": "Staff"
+    }
+  ],
+  "age": 31,
+  "education": "University",
+  "income": 550000,
+  "startIncome": 75000,
+  "workyear": 9,
+  "location": "shanghai"
+}

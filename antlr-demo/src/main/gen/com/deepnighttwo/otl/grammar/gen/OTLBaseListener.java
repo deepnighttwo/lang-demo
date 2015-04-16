@@ -1,4 +1,4 @@
-// Generated from G:/mymise/lang-demo/antlr-demo/src/main/java/otfql\OTL.g4 by ANTLR 4.5
+// Generated from G:/mymise/lang-demo/antlr-demo/src/main/java/otl\OTL.g4 by ANTLR 4.5
 package com.deepnighttwo.otl.grammar.gen;
 
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -65,25 +65,61 @@ public class OTLBaseListener implements OTLListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVarProp(@NotNull OTLParser.VarPropContext ctx) { }
+	@Override public void enterPropsSel(@NotNull OTLParser.PropsSelContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVarProp(@NotNull OTLParser.VarPropContext ctx) { }
+	@Override public void exitPropsSel(@NotNull OTLParser.PropsSelContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNumber(@NotNull OTLParser.NumberContext ctx) { }
+	@Override public void enterFloatVar(@NotNull OTLParser.FloatVarContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNumber(@NotNull OTLParser.NumberContext ctx) { }
+	@Override public void exitFloatVar(@NotNull OTLParser.FloatVarContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterNullVar(@NotNull OTLParser.NullVarContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitNullVar(@NotNull OTLParser.NullVarContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCharVar(@NotNull OTLParser.CharVarContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCharVar(@NotNull OTLParser.CharVarContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterFuncVar(@NotNull OTLParser.FuncVarContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFuncVar(@NotNull OTLParser.FuncVarContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -125,18 +161,6 @@ public class OTLBaseListener implements OTLListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPropsSel(@NotNull OTLParser.PropsSelContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitPropsSel(@NotNull OTLParser.PropsSelContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterDirectPropVar(@NotNull OTLParser.DirectPropVarContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -149,37 +173,37 @@ public class OTLBaseListener implements OTLListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNumExprVar(@NotNull OTLParser.NumExprVarContext ctx) { }
+	@Override public void enterIntVar(@NotNull OTLParser.IntVarContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNumExprVar(@NotNull OTLParser.NumExprVarContext ctx) { }
+	@Override public void exitIntVar(@NotNull OTLParser.IntVarContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLiteralVar(@NotNull OTLParser.LiteralVarContext ctx) { }
+	@Override public void enterBooleanVar(@NotNull OTLParser.BooleanVarContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLiteralVar(@NotNull OTLParser.LiteralVarContext ctx) { }
+	@Override public void exitBooleanVar(@NotNull OTLParser.BooleanVarContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFuncVar(@NotNull OTLParser.FuncVarContext ctx) { }
+	@Override public void enterStringVar(@NotNull OTLParser.StringVarContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFuncVar(@NotNull OTLParser.FuncVarContext ctx) { }
+	@Override public void exitStringVar(@NotNull OTLParser.StringVarContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

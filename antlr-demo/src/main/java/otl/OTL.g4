@@ -6,21 +6,21 @@ select      : SELECT propsSel (COMMA propsSel)*;
 from        : FROM ID;
 where       : WHERE boolExprs;
 
-numExpr     : LPAREN numExpr RPAREN                         # Parens
-            | numExpr op=(MUL |DIV ) numExpr                # MulDiv
-            | numExpr op=(ADD |SUB ) numExpr                # AddSub
-            | numberLiteral                                 # Number
-            | propFullName                                  # VarProp
-            ;
-
 
 // prop part
 propsSel    : propVar (AS ID)?;
 
 propVar     : propFullName                                              # DirectPropVar
-            | numExpr                                                   # NumExprVar
-            | literal                                                   # literalVar
-            | ID LPAREN propFullName (COMMA propFullName)* RPAREN       # FuncVar
+            | LPAREN propVar RPAREN                                     # Parens
+            | propVar op=(MUL |DIV ) propVar                            # MulDiv
+            | propVar op=(ADD |SUB ) propVar                            # AddSub
+            | integerLiteral                                            # IntVar
+            | FloatingPointLiteral                                      # FloatVar
+            | CharacterLiteral                                          # CharVar
+            | StringLiteral                                             # StringVar
+            | booleanLiteral                                            # BooleanVar
+            | NULL                                                      # NullVar
+            | ID LPAREN propFullName? (COMMA propFullName)* RPAREN       # FuncVar
             ;
 
 propFullName: propName(DOT propName)*;

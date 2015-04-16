@@ -3,7 +3,13 @@ select
      upper(person.addr) as addr,
      person.workexp[0] as firstwork,
      isGoodInCome(person.age, person.education, person.income) as isGoodIncome,
-     (person.income-person.startIncome)/person.workyear as salaryIncreaseYearly
+     (person.income-person.startIncome)/person.workyear as salaryIncreaseYearly,
+     null as furtherdata,
+     now() as datetime,
+     "Phase1" as currStep,
+     99 as status,
+     'a' as grade,
+     98.5 as mark
 from person
     where (person.age > 30 and person.workyear > 7) 
     or person.location="shanghai"

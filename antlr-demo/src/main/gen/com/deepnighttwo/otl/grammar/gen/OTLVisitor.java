@@ -1,4 +1,4 @@
-// Generated from G:/mymise/lang-demo/antlr-demo/src/main/java/otfql\OTL.g4 by ANTLR 4.5
+// Generated from G:/mymise/lang-demo/antlr-demo/src/main/java/otl\OTL.g4 by ANTLR 4.5
 package com.deepnighttwo.otl.grammar.gen;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
@@ -36,46 +36,60 @@ public interface OTLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitWhere(@NotNull OTLParser.WhereContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code VarProp}
-	 * labeled alternative in {@link OTLParser#numExpr}.
+	 * Visit a parse tree produced by {@link OTLParser#propsSel}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitVarProp(@NotNull OTLParser.VarPropContext ctx);
+	T visitPropsSel(@NotNull OTLParser.PropsSelContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code Number}
-	 * labeled alternative in {@link OTLParser#numExpr}.
+	 * Visit a parse tree produced by the {@code FloatVar}
+	 * labeled alternative in {@link OTLParser#propVar}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitNumber(@NotNull OTLParser.NumberContext ctx);
+	T visitFloatVar(@NotNull OTLParser.FloatVarContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code NullVar}
+	 * labeled alternative in {@link OTLParser#propVar}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNullVar(@NotNull OTLParser.NullVarContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code CharVar}
+	 * labeled alternative in {@link OTLParser#propVar}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCharVar(@NotNull OTLParser.CharVarContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code FuncVar}
+	 * labeled alternative in {@link OTLParser#propVar}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFuncVar(@NotNull OTLParser.FuncVarContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code MulDiv}
-	 * labeled alternative in {@link OTLParser#numExpr}.
+	 * labeled alternative in {@link OTLParser#propVar}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitMulDiv(@NotNull OTLParser.MulDivContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code AddSub}
-	 * labeled alternative in {@link OTLParser#numExpr}.
+	 * labeled alternative in {@link OTLParser#propVar}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitAddSub(@NotNull OTLParser.AddSubContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code Parens}
-	 * labeled alternative in {@link OTLParser#numExpr}.
+	 * labeled alternative in {@link OTLParser#propVar}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitParens(@NotNull OTLParser.ParensContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link OTLParser#propsSel}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitPropsSel(@NotNull OTLParser.PropsSelContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code DirectPropVar}
 	 * labeled alternative in {@link OTLParser#propVar}.
@@ -84,26 +98,26 @@ public interface OTLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitDirectPropVar(@NotNull OTLParser.DirectPropVarContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code NumExprVar}
+	 * Visit a parse tree produced by the {@code IntVar}
 	 * labeled alternative in {@link OTLParser#propVar}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitNumExprVar(@NotNull OTLParser.NumExprVarContext ctx);
+	T visitIntVar(@NotNull OTLParser.IntVarContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code literalVar}
+	 * Visit a parse tree produced by the {@code BooleanVar}
 	 * labeled alternative in {@link OTLParser#propVar}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitLiteralVar(@NotNull OTLParser.LiteralVarContext ctx);
+	T visitBooleanVar(@NotNull OTLParser.BooleanVarContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code FuncVar}
+	 * Visit a parse tree produced by the {@code StringVar}
 	 * labeled alternative in {@link OTLParser#propVar}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitFuncVar(@NotNull OTLParser.FuncVarContext ctx);
+	T visitStringVar(@NotNull OTLParser.StringVarContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link OTLParser#propFullName}.
 	 * @param ctx the parse tree
