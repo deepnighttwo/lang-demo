@@ -4,7 +4,7 @@ import LiteralVars;
 ql          : select from (where)?;
 select      : SELECT propsSel (COMMA propsSel)*;
 from        : FROM ID;
-where       : WHERE boolExprs;
+where       : WHERE boolExpr;
 
 
 // prop part
@@ -23,17 +23,12 @@ propVar     : propFullName                                              # Direct
             | ID LPAREN propFullName? (COMMA propFullName)* RPAREN      # FuncVar
             ;
 
-propFullName: propName(DOT propName)*;
+propFullName: propName (DOT propName)*;
 
-propName    : ID                                # Prop
-            | ID LBRACK integerLiteral RBRACK   # ArrayProp
+propName    : ID (LBRACK integerLiteral RBRACK)*
             ;
 
-
-
 // bool part
-
-boolExprs   : boolExpr (boolOprt=(AND|OR) boolExpr)*;
 
 boolExpr    : propVar compareOpr=(EQUALS | BIGGER | SMALLER | BIGGEROREQ | SMALLEROREQ | NOTEQUAL) propVar       # CompareBool
             | NOT boolExpr                                                                                       # NotBool

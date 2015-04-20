@@ -201,39 +201,15 @@ public interface OTLListener extends ParseTreeListener {
 	 */
 	void exitPropFullName(@NotNull OTLParser.PropFullNameContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Prop}
-	 * labeled alternative in {@link OTLParser#propName}.
+	 * Enter a parse tree produced by {@link OTLParser#propName}.
 	 * @param ctx the parse tree
 	 */
-	void enterProp(@NotNull OTLParser.PropContext ctx);
+	void enterPropName(@NotNull OTLParser.PropNameContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code Prop}
-	 * labeled alternative in {@link OTLParser#propName}.
+	 * Exit a parse tree produced by {@link OTLParser#propName}.
 	 * @param ctx the parse tree
 	 */
-	void exitProp(@NotNull OTLParser.PropContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code ArrayProp}
-	 * labeled alternative in {@link OTLParser#propName}.
-	 * @param ctx the parse tree
-	 */
-	void enterArrayProp(@NotNull OTLParser.ArrayPropContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code ArrayProp}
-	 * labeled alternative in {@link OTLParser#propName}.
-	 * @param ctx the parse tree
-	 */
-	void exitArrayProp(@NotNull OTLParser.ArrayPropContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link OTLParser#boolExprs}.
-	 * @param ctx the parse tree
-	 */
-	void enterBoolExprs(@NotNull OTLParser.BoolExprsContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link OTLParser#boolExprs}.
-	 * @param ctx the parse tree
-	 */
-	void exitBoolExprs(@NotNull OTLParser.BoolExprsContext ctx);
+	void exitPropName(@NotNull OTLParser.PropNameContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code CompareBool}
 	 * labeled alternative in {@link OTLParser#boolExpr}.

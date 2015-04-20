@@ -125,25 +125,11 @@ public interface OTLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitPropFullName(@NotNull OTLParser.PropFullNameContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code Prop}
-	 * labeled alternative in {@link OTLParser#propName}.
+	 * Visit a parse tree produced by {@link OTLParser#propName}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitProp(@NotNull OTLParser.PropContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code ArrayProp}
-	 * labeled alternative in {@link OTLParser#propName}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitArrayProp(@NotNull OTLParser.ArrayPropContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link OTLParser#boolExprs}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitBoolExprs(@NotNull OTLParser.BoolExprsContext ctx);
+	T visitPropName(@NotNull OTLParser.PropNameContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code CompareBool}
 	 * labeled alternative in {@link OTLParser#boolExpr}.

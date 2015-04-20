@@ -137,21 +137,7 @@ public class OTLBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements OT
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitProp(@NotNull OTLParser.PropContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitArrayProp(@NotNull OTLParser.ArrayPropContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitBoolExprs(@NotNull OTLParser.BoolExprsContext ctx) { return visitChildren(ctx); }
+	@Override public T visitPropName(@NotNull OTLParser.PropNameContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

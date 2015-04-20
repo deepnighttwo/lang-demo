@@ -5,6 +5,10 @@ import com.deepnighttwo.otl.grammar.gen.OTLLexer;
 import com.deepnighttwo.otl.grammar.gen.OTLParser;
 import org.antlr.v4.runtime.misc.NotNull;
 
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * User: Mark Zang
  * Date: 2015/4/16
@@ -12,6 +16,34 @@ import org.antlr.v4.runtime.misc.NotNull;
  */
 public class JSONOTLVisitor extends OTLBaseVisitor<Object> {
 
+    private Object rawData;
+
+    private Object currData;
+
+    private Map result;
+
+    public JSONOTLVisitor(Object rawData) {
+        this.rawData = rawData;
+    }
+
+    public JSONOTLVisitor() {
+    }
+
+    public Object getRawData() {
+        return rawData;
+    }
+
+    public void setRawData(Object rawData) {
+        this.rawData = rawData;
+    }
+
+    @Override
+    public Object visitSelect(@NotNull OTLParser.SelectContext ctx) {
+        result = new LinkedHashMap();
+        super.visitSelect(ctx);
+        System.out.println(result);
+        return null;
+    }
 
     @Override
     public Object visitFrom(@NotNull OTLParser.FromContext ctx) {
@@ -20,17 +52,24 @@ public class JSONOTLVisitor extends OTLBaseVisitor<Object> {
 
     @Override
     public Object visitPropsSel(@NotNull OTLParser.PropsSelContext ctx) {
-        return super.visitPropsSel(ctx);
+
+        currData = rawData;
+
+        String alias = ctx.ID() == null ? "default name" : ctx.ID().getText();
+        Object var = visit(ctx.propVar());
+
+        result.put(alias, var);
+        return var;
     }
 
     @Override
     public Object visitFloatVar(@NotNull OTLParser.FloatVarContext ctx) {
-        return super.visitFloatVar(ctx);
+        return Double.valueOf(ctx.getText());
     }
 
     @Override
     public Object visitNullVar(@NotNull OTLParser.NullVarContext ctx) {
-        return super.visitNullVar(ctx);
+        return null;
     }
 
     @Override
@@ -45,64 +84,85 @@ public class JSONOTLVisitor extends OTLBaseVisitor<Object> {
 
     @Override
     public Object visitMulDiv(@NotNull OTLParser.MulDivContext ctx) {
-        return super.visitMulDiv(ctx);
+        double var1 = (double) (visit(ctx.propVar(0)));
+        double var2 = (double) (visit(ctx.propVar(1)));
+
+        if (ctx.op.getType() == OTLLexer.MUL) {
+            return var1 * var2;
+        } else {
+            return var1 / var2;
+        }
     }
 
     @Override
     public Object visitAddSub(@NotNull OTLParser.AddSubContext ctx) {
-        return super.visitAddSub(ctx);
+        double var1 = (double) (visit(ctx.propVar(0)));
+        double var2 = (double) (visit(ctx.propVar(1)));
+
+        if (ctx.op.getType() == OTLLexer.ADD) {
+            return var1 + var2;
+        } else {
+            return var1 - var2;
+        }
     }
 
     @Override
     public Object visitParens(@NotNull OTLParser.ParensContext ctx) {
-        return super.visitParens(ctx);
+        return visit(ctx.propVar());
     }
 
     @Override
     public Object visitDirectPropVar(@NotNull OTLParser.DirectPropVarContext ctx) {
-        return super.visitDirectPropVar(ctx);
+        return visit(ctx.propFullName());
     }
 
     @Override
     public Object visitIntVar(@NotNull OTLParser.IntVarContext ctx) {
-        return super.visitIntVar(ctx);
+        return Integer.parseInt(ctx.getText());
     }
 
     @Override
     public Object visitBooleanVar(@NotNull OTLParser.BooleanVarContext ctx) {
-        return super.visitBooleanVar(ctx);
+        return visit(ctx.booleanLiteral());
     }
 
     @Override
     public Object visitStringVar(@NotNull OTLParser.StringVarContext ctx) {
-        return super.visitStringVar(ctx);
+        return ctx.StringLiteral().getText();
     }
 
     @Override
     public Object visitPropFullName(@NotNull OTLParser.PropFullNameContext ctx) {
-        return super.visitPropFullName(ctx);
+        List<OTLParser.PropNameContext> propNameContexts = ctx.propName();
+
+        Object ret = null;
+        for (OTLParser.PropNameContext propNameContext : propNameContexts) {
+            ret = visit(propNameContext);
+        }
+        return ret;
     }
 
     @Override
-    public Object visitProp(@NotNull OTLParser.PropContext ctx) {
-        return super.visitProp(ctx);
-    }
-
-    @Override
-    public Object visitArrayProp(@NotNull OTLParser.ArrayPropContext ctx) {
-        return super.visitArrayProp(ctx);
-    }
-
-    @Override
-    public Object visitBoolExprs(@NotNull OTLParser.BoolExprsContext ctx) {
-        return super.visitBoolExprs(ctx);
+    public Object visitPropName(@NotNull OTLParser.PropNameContext ctx) {
+        List<OTLParser.IntegerLiteralContext> indexCtxs = ctx.integerLiteral();
+        String propName = ctx.ID().getText();
+        Object ret = ((Map) currData).get(propName);
+        currData = ret;
+        if (indexCtxs == null || indexCtxs.isEmpty()) {
+            return ret;
+        } else {
+            for (OTLParser.IntegerLiteralContext indexCtx : indexCtxs) {
+                Integer index = (Integer) visit(indexCtx);
+                currData = ((List) currData).get(index);
+            }
+            return currData;
+        }
     }
 
     @Override
     public Object visitIntegerLiteral(@NotNull OTLParser.IntegerLiteralContext ctx) {
         return Integer.parseInt(ctx.getText());
     }
-
 
     @Override
     public Object visitFalseBool(@NotNull OTLParser.FalseBoolContext ctx) {
@@ -116,7 +176,7 @@ public class JSONOTLVisitor extends OTLBaseVisitor<Object> {
 
     @Override
     public Object visitNotBool(@NotNull OTLParser.NotBoolContext ctx) {
-        return !(Boolean) this.visit(ctx.boolExpr());
+        return !((Boolean) this.visit(ctx.boolExpr()));
     }
 
     @Override

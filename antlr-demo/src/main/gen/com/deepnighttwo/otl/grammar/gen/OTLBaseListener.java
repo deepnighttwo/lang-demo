@@ -221,37 +221,13 @@ public class OTLBaseListener implements OTLListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterProp(@NotNull OTLParser.PropContext ctx) { }
+	@Override public void enterPropName(@NotNull OTLParser.PropNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitProp(@NotNull OTLParser.PropContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterArrayProp(@NotNull OTLParser.ArrayPropContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitArrayProp(@NotNull OTLParser.ArrayPropContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterBoolExprs(@NotNull OTLParser.BoolExprsContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitBoolExprs(@NotNull OTLParser.BoolExprsContext ctx) { }
+	@Override public void exitPropName(@NotNull OTLParser.PropNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
