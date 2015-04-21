@@ -5,10 +5,15 @@ import com.deepnighttwo.otl.grammar.gen.OTLParser;
 import com.google.gson.Gson;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
+import otl.ext.ExtensionFunction;
+import otl.func.Function;
+import otl.func.FunctionMgr;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -21,31 +26,32 @@ public class JSONVisitorAppMain {
 
     static Gson gson = new Gson();
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+
+        FunctionMgr functionMgr = new FunctionMgr();
+
+        Method method = ExtensionFunction.class.getMethod("isGoodIncome", double.class, String.class, double.class);
+        Function func = new Function(method, null);
+        functionMgr.addFunction("isGoodIncome", func);
+
         Map data = gson.fromJson(new InputStreamReader(JSONVisitorAppMain.class.getResourceAsStream("/person.json")), Map.class);
 
         String otl = "select\n" +
                 "     person.name as name,\n" +
                 "     upper(person.addr) as addr,\n" +
-                "     person.workexp[0] as firstwork,\n" +
-                "     isGoodInCome(person.age, person.education, person.income) as isGoodIncome,\n" +
-//                "     (person.income-person.startIncome)/person.workyear as salaryIncreaseYearly,\n" +
+                "     person.workexp[0].companyName as firstworkCompany,\n" +
+                "     isGoodIncome(person.age, person.education, person.income) as isGoodIncome,\n" +
+                "     (person.income-person.startIncome)/person.workyear as salaryIncreaseYearly,\n" +
                 "     null as furtherdata,\n" +
-                "     now() as datetime,\n" +
+                "     nowStr() as datetime,\n" +
                 "     \"Phase1\" as currStep,\n" +
                 "     99 as status,\n" +
                 "     'a' as grade,\n" +
                 "     98.5 as mark\n" +
-                " from person\n";
-//        +
-//                " where (person.age > 30 and person.workyear > 7) \n" +
-//                "    or person.location=\"shanghai\"\n" +
-//                "    or person.education=\"doctor\"";
-
-
-//        String otl = "select\n" +
-//                "     person.age as age\n" +
-//                " from person\n";
+                " from PersonData as person\n" +
+                " where (person.age > 30 and person.workyear > 7) \n" +
+                "    or person.location=\"shanghai\"\n" +
+                "    or person.education=\"doctor\"";
 
         ANTLRInputStream inputStream = new ANTLRInputStream(new ByteArrayInputStream(otl.getBytes()));
         OTLLexer lexer = new OTLLexer(inputStream);
@@ -59,17 +65,26 @@ public class JSONVisitorAppMain {
         OTLParser.WhereContext whereContext = qlContext.where();
 
         JSONOTLVisitor visitor = new JSONOTLVisitor();
+        visitor.setFunctionMgr(functionMgr);
 
         Map mixData = new LinkedHashMap();
-        String from = (String) visitor.visit(fromCtx);
-        mixData.put(from, data);
+        String from = fromCtx.fromSource.getText();
+
+        if (fromCtx.fromAlias != null) {
+            String fromAlias = fromCtx.fromAlias.getText();
+            mixData.put(fromAlias, data);
+        }
 
         visitor.setRawData(mixData);
 
-        visitor.visit(selectContext);
+        if (whereContext != null) {
+            boolean whereResult = (boolean) visitor.visit(whereContext);
+            System.out.println(whereResult);
+        }
 
-//        visitor.visit(whereContext);
+        Object result = visitor.visit(selectContext);
 
+        LogFacade.log(result);
 
 
     }

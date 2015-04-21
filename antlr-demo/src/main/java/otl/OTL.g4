@@ -3,7 +3,7 @@ import LiteralVars;
 
 ql          : select from (where)?;
 select      : SELECT propsSel (COMMA propsSel)*;
-from        : FROM ID;
+from        : FROM fromSource=ID (AS fromAlias=ID)?;
 where       : WHERE boolExpr;
 
 

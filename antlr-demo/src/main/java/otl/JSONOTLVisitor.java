@@ -4,7 +4,9 @@ import com.deepnighttwo.otl.grammar.gen.OTLBaseVisitor;
 import com.deepnighttwo.otl.grammar.gen.OTLLexer;
 import com.deepnighttwo.otl.grammar.gen.OTLParser;
 import org.antlr.v4.runtime.misc.NotNull;
+import otl.func.FunctionMgr;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +23,16 @@ public class JSONOTLVisitor extends OTLBaseVisitor<Object> {
     private Object currData;
 
     private Map result;
+
+    private FunctionMgr functionMgr;
+
+    public FunctionMgr getFunctionMgr() {
+        return functionMgr;
+    }
+
+    public void setFunctionMgr(FunctionMgr functionMgr) {
+        this.functionMgr = functionMgr;
+    }
 
     public JSONOTLVisitor(Object rawData) {
         this.rawData = rawData;
@@ -41,20 +53,11 @@ public class JSONOTLVisitor extends OTLBaseVisitor<Object> {
     public Object visitSelect(@NotNull OTLParser.SelectContext ctx) {
         result = new LinkedHashMap();
         super.visitSelect(ctx);
-        System.out.println(result);
-        return null;
-    }
-
-    @Override
-    public Object visitFrom(@NotNull OTLParser.FromContext ctx) {
-        return ctx.ID().getText();
+        return result;
     }
 
     @Override
     public Object visitPropsSel(@NotNull OTLParser.PropsSelContext ctx) {
-
-        currData = rawData;
-
         String alias = ctx.ID() == null ? "default name" : ctx.ID().getText();
         Object var = visit(ctx.propVar());
 
@@ -74,12 +77,30 @@ public class JSONOTLVisitor extends OTLBaseVisitor<Object> {
 
     @Override
     public Object visitCharVar(@NotNull OTLParser.CharVarContext ctx) {
-        return super.visitCharVar(ctx);
+        return ctx.CharacterLiteral().getText().charAt(1);
     }
 
     @Override
     public Object visitFuncVar(@NotNull OTLParser.FuncVarContext ctx) {
-        return super.visitFuncVar(ctx);
+
+        String funName = ctx.ID().getText();
+
+        List<OTLParser.PropFullNameContext> propFullNameContexts = ctx.propFullName();
+
+        Object[] args = new Object[propFullNameContexts.size()];
+        int i = 0;
+        for (OTLParser.PropFullNameContext propFullNameContext : propFullNameContexts) {
+            args[i] = visit(propFullNameContext);
+            i++;
+        }
+
+        try {
+            return functionMgr.callFunction(funName, args);
+        } catch (InvocationTargetException e) {
+            return null;
+        } catch (IllegalAccessException e) {
+            return null;
+        }
     }
 
     @Override
@@ -133,8 +154,9 @@ public class JSONOTLVisitor extends OTLBaseVisitor<Object> {
 
     @Override
     public Object visitPropFullName(@NotNull OTLParser.PropFullNameContext ctx) {
-        List<OTLParser.PropNameContext> propNameContexts = ctx.propName();
+        currData = rawData;
 
+        List<OTLParser.PropNameContext> propNameContexts = ctx.propName();
         Object ret = null;
         for (OTLParser.PropNameContext propNameContext : propNameContexts) {
             ret = visit(propNameContext);
@@ -208,7 +230,39 @@ public class JSONOTLVisitor extends OTLBaseVisitor<Object> {
 
         Comparable var2 = (Comparable) this.visit(ctx.propVar(1));
 
+        if (var1 == null && var2 == null) {
+            return true;
+        }
+
+        if (var1 == null || var2 == null) {
+            return false;
+        }
+
+        int dataType1 = ComputeUtils.getType(var1);
+        int dataType2 = ComputeUtils.getType(var2);
+
+        if (dataType1 * dataType2 < 0) {
+            throw new RuntimeException("data not comparable: data1(" + var1.getClass().toString() + ")=" + var1 + ", data2(" + var2.getClass().toString() + ")=" + var2);
+        }
+
         int type = ctx.compareOpr.getType();
+
+        if (dataType1 == dataType2) {
+            return comparableCompare(type, var1, var2);
+        }
+        // both is number but has different type
+        int dataMask1 = dataType1 & ComputeUtils.TYPE_MASK;
+        int dataMask2 = dataType2 & ComputeUtils.TYPE_MASK;
+        if (dataMask1 == dataMask2 && dataMask1 == ComputeUtils.INT_NUM) {
+            return comparableCompare(type, ((Number) var1).longValue(), ((Number) var2).longValue());
+        } else {
+            return comparableCompare(type, ((Number) var1).doubleValue(), ((Number) var2).doubleValue());
+        }
+
+    }
+
+
+    private boolean comparableCompare(int type, Comparable var1, Comparable var2) {
         switch (type) {
             case OTLLexer.SMALLER:
                 return var1.compareTo(var2) < 0;
@@ -223,7 +277,9 @@ public class JSONOTLVisitor extends OTLBaseVisitor<Object> {
             case OTLLexer.BIGGEROREQ:
                 return var1.compareTo(var2) >= 0;
             default:
-                throw new RuntimeException("Unsupported operation " + ctx.compareOpr.getText());
+                throw new RuntimeException("Unsupported operation type " + type);
         }
     }
+
+
 }
