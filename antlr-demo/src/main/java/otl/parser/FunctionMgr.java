@@ -1,4 +1,4 @@
-package otl.func;
+package otl.parser;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -12,12 +12,12 @@ import java.util.Map;
  */
 public class FunctionMgr {
 
-
     Map<String, Function> functionMap = new HashMap<>();
 
     public FunctionMgr() {
+        DefaultFunctions defaultFunctions = DefaultFunctions.getInstance();
         for (Method method : DefaultFunctions.class.getMethods()) {
-            this.addFunction(method.getName(), new Function(method, null));
+            this.addFunction(method.getName(), new Function(method, defaultFunctions));
         }
 
     }

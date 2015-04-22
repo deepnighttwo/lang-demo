@@ -1,5 +1,5 @@
-// Generated from G:/mymise/lang-demo/antlr-demo/src/main/java/otl\OTL.g4 by ANTLR 4.5
-package com.deepnighttwo.otl.grammar.gen;
+// Generated from G:/mymise/lang-demo/antlr-demo/src/main/java/otl/grammar\OTL.g4 by ANTLR 4.5
+package otl.grammar;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 

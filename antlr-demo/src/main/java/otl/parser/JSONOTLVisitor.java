@@ -1,10 +1,9 @@
-package otl;
+package otl.parser;
 
-import com.deepnighttwo.otl.grammar.gen.OTLBaseVisitor;
-import com.deepnighttwo.otl.grammar.gen.OTLLexer;
-import com.deepnighttwo.otl.grammar.gen.OTLParser;
 import org.antlr.v4.runtime.misc.NotNull;
-import otl.func.FunctionMgr;
+import otl.grammar.OTLBaseVisitor;
+import otl.grammar.OTLLexer;
+import otl.grammar.OTLParser;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.LinkedHashMap;

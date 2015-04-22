@@ -1,4 +1,4 @@
-package otl;
+package otl.parser;
 
 /**
  * User: Mark Zang

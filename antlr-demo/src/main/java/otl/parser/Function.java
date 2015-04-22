@@ -1,4 +1,4 @@
-package otl.func;
+package otl.parser;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

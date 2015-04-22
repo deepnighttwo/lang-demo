@@ -1,19 +1,15 @@
 package otl;
 
-import com.deepnighttwo.otl.grammar.gen.OTLLexer;
-import com.deepnighttwo.otl.grammar.gen.OTLParser;
 import com.google.gson.Gson;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
-import otl.ext.ExtensionFunction;
-import otl.func.Function;
-import otl.func.FunctionMgr;
+import otl.grammar.OTLLexer;
+import otl.grammar.OTLParser;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -28,11 +24,6 @@ public class JSONVisitorAppMain {
 
     public static void main(String[] args) throws IOException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
 
-        FunctionMgr functionMgr = new FunctionMgr();
-
-        Method method = ExtensionFunction.class.getMethod("isGoodIncome", double.class, String.class, double.class);
-        Function func = new Function(method, null);
-        functionMgr.addFunction("isGoodIncome", func);
 
         Map data = gson.fromJson(new InputStreamReader(JSONVisitorAppMain.class.getResourceAsStream("/person.json")), Map.class);
 
@@ -59,13 +50,12 @@ public class JSONVisitorAppMain {
         OTLParser otlParse = new OTLParser(tokenStream);
 
         OTLParser.QlContext qlContext = otlParse.ql();
+        System.out.println(qlContext.getText());
 
         OTLParser.SelectContext selectContext = qlContext.select();
         OTLParser.FromContext fromCtx = qlContext.from();
         OTLParser.WhereContext whereContext = qlContext.where();
 
-        JSONOTLVisitor visitor = new JSONOTLVisitor();
-        visitor.setFunctionMgr(functionMgr);
 
         Map mixData = new LinkedHashMap();
         String from = fromCtx.fromSource.getText();
@@ -75,16 +65,16 @@ public class JSONVisitorAppMain {
             mixData.put(fromAlias, data);
         }
 
-        visitor.setRawData(mixData);
+//        visitor.setRawData(mixData);
+//
+//        if (whereContext != null) {
+//            boolean whereResult = (boolean) visitor.visit(whereContext);
+//            System.out.println(whereResult);
+//        }
+//
+//        Object result = visitor.visit(selectContext);
 
-        if (whereContext != null) {
-            boolean whereResult = (boolean) visitor.visit(whereContext);
-            System.out.println(whereResult);
-        }
-
-        Object result = visitor.visit(selectContext);
-
-        LogFacade.log(result);
+//        LogFacade.log(result);
 
 
     }
