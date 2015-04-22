@@ -6,6 +6,7 @@ import otl.grammar.OTLLexer;
 import otl.grammar.OTLParser;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,6 +47,23 @@ public class JSONOTLVisitor extends OTLBaseVisitor<Object> {
 
     public void setRawData(Object rawData) {
         this.rawData = rawData;
+    }
+
+    @Override
+    public Object visitQl(@NotNull OTLParser.QlContext ctx) {
+
+        if (ctx.from().fromAlias != null) {
+            String fromAlias = ctx.from().fromAlias.getText();
+            Map mixData = new HashMap();
+            mixData.put(fromAlias, rawData);
+            rawData = mixData;
+        }
+        if (ctx.where() == null || ((boolean) visit(ctx.where()) == false)) {
+            return null;
+        }
+
+        Object retData = visit(ctx.select());
+        return retData;
     }
 
     @Override
